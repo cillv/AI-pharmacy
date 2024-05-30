@@ -1,0 +1,26 @@
+div {
+  background-color: antiquewhite;
+  /* border-radius: 50%; */
+  float: right;
+  padding: 930px 500px 0px 100px;
+  position: relative;
+}
+
+h2 {
+  position: absolute;
+  left: 11.1%;
+  bottom: 30%;
+
+  font-size: 3em;
+  text-align: center;
+  font-family: "Black Han Sans", sans-serif;
+}
+img {
+  width: 30%;
+  height: 30%;
+
+  position: absolute;
+
+  right: 33%;
+  top: -15%;
+}

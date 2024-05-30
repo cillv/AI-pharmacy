@@ -1,106 +1,87 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
-.div1 {
-  width: 500px;
-  height: 1000px;
-  background-color: #c7d9b7;
-  margin: -200px 1000px;
-}
-.hi {
-  background-color: #000000;
-  margin: 200px 100px;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
+mf {
+  font-family: "Playfair Display", serif;
+  align-content: center;
+  font-size: 50px;
+  font-style: normal;
+  display: block;
   text-align: center;
-  padding: 100px;
-  background: whitesmoke;
-  display: table-cell;
+  margin-bottom: 20px;
+}
+.idfont {
+  font-family: "Playfair Display", serif;
+  display: block;
+  margin: 0 auto;
+}
+.container {
+  display: flex;
+  height: 100vh; /* 화면의 전체 높이를 차지하도록 설정 */
+}
+.logo-container {
+  flex: 1; /* 이미지가 가능한 한 많은 공간을 차지하도록 설정 */
+  height: 100%;
+  display: flex;
+  align-items: center; /* 수직 중앙 정렬 */
+  justify-content: center; /* 수평 중앙 정렬 */
+}
+.logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* 이미지가 박스의 크기에 맞게 조정되도록 설정 */
+}
+.box {
+  background-color: #cddaa8;
+  width: 35%; /* 박스가 오른쪽 절반을 차지하도록 설정 */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 위로 정렬 */
+  padding-top: 20px; /* 상단 여백 추가 */
+}
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px; /* 입력 그룹 사이의 간격 추가 */
 }
 
-button {
-  margin: 20px;
+.id-label {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  margin-left: 5%;
 }
 
-.w-btn {
-  position: relative;
+input#id,
+input#password {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px; /* 폰트 크기 증가 */
+  padding: 10px;
+  width: 60%; /* 크기를 줄임 */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  margin-bottom: 200px; /* 아래 여백 추가 */
+}
+
+.login-button {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  width: auto; /* 버튼의 가로 크기를 자동으로 설정 */
+  margin: 20px auto 0; /* 상단 여백, 수평 중앙 정렬 */
+  background-color: #4caf50; /* 버튼 배경색 */
+  color: white; /* 버튼 텍스트 색상 */
   border: none;
-  display: inline-block;
-  padding: 15px 30px;
-  border-radius: 15px;
-  font-family: "paybooc-Light", sans-serif;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.25s;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.w-btn-outline {
-  position: relative;
-  padding: 15px 30px;
-  border-radius: 15px;
-  font-family: "paybooc-Light", sans-serif;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.25s;
-}
-
-.w-btn-indigo {
-  background-color: aliceblue;
-  color: #1e6b7b;
-}
-
-.w-btn-indigo-outline {
-  border: 3px solid aliceblue;
-  color: #1e6b7b;
-}
-
-.w-btn-indigo-outline:hover {
-  color: #1e6b7b;
-  background: aliceblue;
-}
-.w-btn-indigo {
-  position: absolute;
-  right: 240px;
-}
-@keyframes gradient1 {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes gradient2 {
-  0% {
-    background-position: 100% 50%;
-  }
-  50% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes ring {
-  0% {
-    width: 30px;
-    height: 30px;
-    opacity: 1;
-  }
-  100% {
-    width: 300px;
-    height: 300px;
-    opacity: 0;
-  }
+.login-button:hover {
+  background-color: #45a049; /* 호버 시 버튼 배경색 */
 }
