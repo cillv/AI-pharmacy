@@ -1,0 +1,9 @@
+.hidden{
+    display: none;
+}
+
+.parentStyle{
+    max-Width : 500px;
+    max-Height : 500px;
+    overflow : hidden;
+}
