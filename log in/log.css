@@ -9,11 +9,61 @@ mf {
   text-align: center;
   margin-bottom: 20px;
 }
-.idfont {
-  font-family: "Playfair Display", serif;
-  display: block;
-  margin: 0 auto;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+input {
+  font-size: 20px;
+  color: #111;
+  height: 30px; /* 세로 크기 줄이기 */
+  border: none;
+  border-bottom: solid #111111 1px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  position: relative;
+  background: none;
+  z-index: 1;
+}
+
+input::placeholder {
+  color: #ffffff;
+}
+input:focus {
+  outline: none;
+}
+
+span {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 30px; /* span의 시작 위치를 label과 맞추기 위해 30px로 설정 */
+  background-color: #111;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  transition: 0.5s;
+}
+
+label {
+  position: absolute;
+  color: #111;
+  left: 1000px;
+  font-size: 20px;
+  bottom: 8px;
+  transition: all 0.2s;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+  font-size: 16px;
+  bottom: 40px;
+  color: #111;
+  font-weight: bold;
+}
+
 .container {
   display: flex;
   height: 100vh; /* 화면의 전체 높이를 차지하도록 설정 */
@@ -42,46 +92,168 @@ mf {
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
 .input-group {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px; /* 입력 그룹 사이의 간격 추가 */
+  position: relative;
+  margin-bottom: 20px; /* input 사이의 간격을 넓히기 위해 추가 */
 }
 
-.id-label {
-  font-family: "Playfair Display", serif;
+.input-group input {
+  width: 70%; /* input의 가로 크기를 줄이기 위해 80%로 설정 */
+}
+
+.input-group label {
+  position: absolute;
+  top: 0;
+  left: 90px; /* 오른쪽으로 20px 옮기기 위해 10px에서 30px로 변경 */
   font-size: 20px;
-  margin-left: 5%;
+  color: #aaa;
+  transition: all 0.2s;
 }
 
-input#id,
-input#password {
-  font-family: "Poppins", sans-serif;
-  font-size: 18px; /* 폰트 크기 증가 */
-  padding: 10px;
-  width: 60%; /* 크기를 줄임 */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+  font-size: 16px;
+  top: -20px;
+  color: #666;
+  font-weight: bold;
+}
+
+.input-group span {
+  left: 90px; /* span의 시작 위치를 label과 맞추기 위해 30px로 설정 */
+}
+
+.input-group input:focus ~ span {
+  width: 70%; /* input의 가로 크기와 맞추기 위해 80%로 설정 */
 }
 
 .title {
   margin-bottom: 200px; /* 아래 여백 추가 */
 }
 
-.login-button {
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  width: auto; /* 버튼의 가로 크기를 자동으로 설정 */
-  margin: 20px auto 0; /* 상단 여백, 수평 중앙 정렬 */
-  background-color: #4caf50; /* 버튼 배경색 */
-  color: white; /* 버튼 텍스트 색상 */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 50px; /* 버튼 사이의 간격 제거 */
 }
 
-.login-button:hover {
-  background-color: #45a049; /* 호버 시 버튼 배경색 */
+.m-b {
+  position: relative;
+  border: none;
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 15px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.m-b-outline {
+  position: relative;
+  padding: 15px 30px;
+  border-radius: 15px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.m-b-login {
+  background-color: aliceblue;
+  color: #1e6b7b;
+  padding: 10px 20px;
+}
+
+.m-b-login-outline {
+  border: 3px solid aliceblue;
+  color: #1e6b7b;
+}
+
+.m-b-login-outline:hover {
+  color: #1e6b7b;
+  background: aliceblue;
+}
+
+.m-b:hover {
+  letter-spacing: 2px;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.m-b-outline:hover {
+  letter-spacing: 2px;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+@keyframes gradient1 {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient2 {
+  0% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px; /* input 사이의 간격을 넓히기 위해 추가 */
+}
+
+.input-group input {
+  width: 70%; /* input의 가로 크기를 줄이기 위해 80%로 설정 */
+}
+
+.input-group label {
+  position: absolute;
+  top: 0;
+  left: 90px; /* 오른쪽으로 20px 옮기기 위해 10px에서 30px로 변경 */
+  font-size: 20px;
+  color: #aaa;
+  transition: all 0.2s;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+  font-size: 16px;
+  top: -20px;
+  color: #666;
+  font-weight: bold;
+}
+
+.input-group span {
+  left: 90px; /* span의 시작 위치를 label과 맞추기 위해 30px로 설정 */
+}
+
+.input-group input:focus ~ span {
+  width: 70%; /* input의 가로 크기와 맞추기 위해 80%로 설정 */
 }

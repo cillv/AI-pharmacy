@@ -14,19 +14,29 @@
       <div class="box">
         <mf class="title">AI-Pharmacy</mf>
         <div class="input-group">
-          <label for="id" class="id-label">ID</label>
-          <input type="text" id="id" class="idfont" />
+          <input type="text" required />
+          <label>ID</label>
+          <span></span>
         </div>
         <div class="input-group">
-          <label for="password" class="id-label">Password</label>
-          <input type="password" id="password" class="idfont" />
+          <input type="password" required />
+          <label>Password</label>
+          <span></span>
         </div>
-        <button
-          class="login-button"
-          onclick="location.href='../main/main.html'"
-        >
-          Login
-        </button>
+        <div class="button-group">
+          <button
+            class="m-b m-b-login"
+            onclick="location.href='../main/main.html'"
+          >
+            Login
+          </button>
+          <button
+            class="m-b m-b-login"
+            onclick="location.href='../SignUP/SignUP.html'"
+          >
+            Sign Up
+          </button>
+        </div>
       </div>
     </div>
   </body>
