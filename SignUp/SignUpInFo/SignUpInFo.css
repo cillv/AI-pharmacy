@@ -1,0 +1,172 @@
+.container {
+  text-align: center;
+  margin-top: 100px; /* 모든 요소를 400px만큼 아래로 이동 */
+  margin-right: 0;
+}
+
+.h1 {
+  text-align: center; /* Sign Up을 가운데 정렬 */
+  font-size: 80px;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 20px; /* Sign Up을 위로 30px만큼 올리기 (기존 100px에서 70px로 변경) */
+}
+
+#SignUP_inform {
+  text-align: left; /* 입력받는 것들을 왼쪽 정렬 */
+}
+
+#SignUP_inform h3 {
+  margin-top: 100px;
+  margin-bottom: 10px;
+}
+
+#SignUP_inform form {
+  margin-bottom: 15px;
+}
+
+input {
+  font-family: "Noto Sans KR", "Noto Sans Korean", "Nanum Gothic", sans-serif !important;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  border: 0;
+  outline: none;
+  font-size: 10px;
+}
+input::placeholder {
+  color: #111111;
+}
+.dust-class {
+  width: 50%;
+  box-sizeing: border-box;
+  margin: 20px auto;
+  position: relative;
+}
+.dust-class label {
+  display: inline-block;
+  position: absolute;
+  top: -5px;
+  left: 14px;
+  padding: 10px;
+  background: white;
+  font-size: 14px;
+  color: #888;
+  font-weight: bold;
+}
+.dust-class.ver2 label {
+  top: initial;
+  bottom: -20px;
+}
+.dust-class label span {
+  color: #da4841;
+  vertical-align: -1px;
+}
+.dust-class input {
+  width: 100%;
+  border: 1px solid #111111 !important;
+  font-size: 1rem;
+  line-height: 1.45;
+  letter-spacing: -0.04rem;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 12px;
+}
+
+.number-label {
+  font-size: 15px;
+  margin-left: 20px;
+  margin-top: 7px;
+  color: #9e9c9c;
+}
+body {
+  background: #ffffff;
+  color: #111;
+  font-weight: 400;
+  font-size: 1em;
+  font-family: "Raleway", Arial, sans-serif;
+}
+
+.button {
+  float: left;
+  min-width: 150px;
+  max-width: 100%; /* 가로 길이를 100%로 설정 */
+  display: block;
+  margin: 1em;
+  padding: 1em 2em;
+  border: none;
+  background: none;
+  color: inherit;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+}
+.button:focus {
+  outline: none;
+}
+.button > span {
+  vertical-align: middle;
+}
+
+.button--round-s {
+  border-radius: 5px;
+}
+.button--border-thin {
+  border: 1px solid;
+}
+
+.button--winona {
+  overflow: hidden;
+  padding: 0;
+  -webkit-transition: border-color 0.3s, background-color 0.3s;
+  transition: border-color 0.3s, background-color 0.3s;
+  -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+.button--winona::after {
+  content: attr(data-text);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  color: #3f51b5;
+  -webkit-transform: translate3d(0, 25%, 0);
+  transform: translate3d(0, 25%, 0);
+}
+.button--winona > span {
+  display: block;
+}
+.button--winona.button--inverted {
+  color: #7986cb;
+}
+.button--winona.button--inverted:after {
+  color: #fff;
+}
+.button--winona::after,
+.button--winona > span {
+  padding: 1em 2em;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+.button--winona:hover {
+  border-color: #3f51b5;
+  background-color: rgba(63, 81, 181, 0.1);
+}
+.button--winona.button--inverted:hover {
+  border-color: #21333c;
+  background-color: #21333c;
+}
+.button--winona:hover::after {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.button--winona:hover > span {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -25%, 0);
+  transform: translate3d(0, -25%, 0);
+}

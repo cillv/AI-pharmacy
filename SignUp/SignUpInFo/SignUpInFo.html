@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <link rel="stylesheet" href="SignUpInFo.css" />
+  </head>
+  <body>
+    <h1 class="h1">Sign Up</h1>
+    <div class="container">
+      <div id="SignUP_inform" class="dust-class">
+        <h3>아이디</h3>
+        <form id="id_create">
+          <input
+            type="text"
+            id="user_id"
+            placeholder="아이디를 입력해주세요."
+          />
+          <p class="number-label">영어와 숫자만 사용해야합니다.</p>
+        </form>
+        <h3>닉네임</h3>
+        <form id="address_create">
+          <input
+            type="text"
+            id="user_address"
+            placeholder="닉네임을 입력하세요."
+          />
+        </form>
+        <h3>비밀번호</h3>
+        <form id="PW_create">
+          <input
+            type="password"
+            id="user_pw"
+            placeholder="비밀번호를 입력해주세요."
+          />
+          <p class="number-label">영어와 숫자만 사용해야합니다.</p>
+        </form>
+        <h3>비밀번호 확인</h3>
+        <form id="PW_confirm">
+          <input
+            type="password"
+            id="user_pw_confirm"
+            placeholder="비밀번호를 한번 더 입력해주세요."
+          />
+        </form>
+        <h3>이메일</h3>
+        <form id="email_create">
+          <input
+            type="email"
+            id="user_email"
+            placeholder="이메일을 입력해주세요."
+          />
+          <p class="number-label">Ex. example@gmail.com</p>
+        </form>
+        <h3>전화번호</h3>
+        <form id="phone_create">
+          <input
+            type="tel"
+            id="user_phone"
+            placeholder="전화번호를 입력해주세요."
+          />
+          <p class="number-label">Ex. 01012345678</p>
+        </form>
+
+        <form id="make_account">
+          <input
+            type="button"
+            value="계정 생성"
+            class="button button--winona button--border-thin button--round-s"
+            onclick="make_account()"
+          /><span></span>
+        </form>
+      </div>
+    </div>
+
+    <script src="SignUpInFo.js"></script>
+  </body>
+</html>

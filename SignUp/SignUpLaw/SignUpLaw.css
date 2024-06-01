@@ -1,0 +1,102 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.top-lines {
+  width: 100%;
+  height: 44px; /* 20px top margin + 2 * 2px line thickness + 20px between lines */
+  position: absolute;
+  top: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top-lines::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: gray;
+}
+
+.nav-buttons {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-buttons button {
+  background-color: transparent;
+  color: gray;
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.nav-buttons button:hover {
+  color: black;
+}
+
+.container {
+  width: 60%;
+  margin-top: 50px;
+}
+
+.h1 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox {
+  margin-bottom: 20px;
+}
+
+.terms {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  height: 150px;
+  overflow-y: scroll;
+  border-radius: 10px; /* 모서리를 둥글게 */
+}
+
+.submit_button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  align-self: center;
+}
+
+.submit_button:hover {
+  background-color: #0056b3;
+}
+
+.ai-pharmacy {
+  position: absolute;
+  font-family: "Playfair Display", serif;
+  top: 8px;
+  left: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  font-weight: 900; /* 굵기 조절 */
+}
