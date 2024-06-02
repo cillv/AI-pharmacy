@@ -7,16 +7,17 @@
 .body {
     min-height: 100vh;
     max-width: 100%;
-    background-color: #E9FFF4; 
+    background-color: #cddaa8; 
     margin: 0 auto;
 }
 
 .title{
+    margin-top: 5%;
     padding-top: 3%;
     padding-bottom: 3%;
     width: 100%;
-    height: auto;
-    background-color: yellowgreen;
+    height: 30%;
+    background-color: #69911a;
     text-align: center;
 }
 
@@ -31,6 +32,68 @@
     background-color: white;
     text-align: center;
     text-size-adjust: 10%;
+}
+
+.top-lines {
+    width: 100%;
+    height: 44px; /* 20px top margin + 2 * 2px line thickness + 20px between lines */
+    position: absolute;
+    top: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top-lines::after {
+content: "";
+display: block;
+height: 1px;
+background-color: gray;
+}
+
+.nav-buttons {
+position: absolute;
+top: 7px;
+right: 10px;
+display: flex;
+justify-content: flex-end;
+}
+
+.nav-buttons button {
+background-color: transparent;
+color: gray;
+border: none;
+padding: 10px;
+font-size: 15px;
+cursor: pointer;
+margin-left: 20px;
+}
+
+.nav-buttons button:hover {
+color: black;
+}
+
+.ai-pharmacy {
+    position: absolute;
+    font-family: "Playfair Display", serif;
+    top: 8px;
+    left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    font-weight: 900; /* 굵기 조절 */
+  }
+
+.bax{
+    width: 45%;
+    height: 300px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    border:solid black;
+    text-align: center;
+    background-color: white;
 }
 
 .hidden{
