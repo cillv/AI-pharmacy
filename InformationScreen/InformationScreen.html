@@ -7,22 +7,22 @@
     <title>약 정보</title>
 </head>
 <body style="background-color:#E9FFF4;">
-    <h1>약 정보 화면</h1>
-    <p>
-        <a href="C:\Users\SAMSUNG\OneDrive\바탕 화면\MH\main\main.html">메인화면</a>
-        <a href="C:\Users\SAMSUNG\OneDrive\바탕 화면\MH\AIDoctor\AIDoctor.html">인공지능 약 추천</a>
-        <a href="C:\Users\SAMSUNG\OneDrive\바탕 화면\MH\login\login.html">로그인 페이지</a>
-    </p>
-    <form id="reach_Inform">
-      <input
-            type="text"
-            placeholder="궁금하신 약의 이름을 적어주세요."
-        />
+    <div class="ai-pharmacy">AI-Pharmacy</div>
+    <div class="top-lines"></div>
+    <div class="nav-buttons">
+        <button onclick="location.href='../main/main.html'">메인</button>
+        <button onclick="location.href='../log in/log.html'">로그인</button>
+        <button onclick="location.href='../Mypage/Mypage.html'">마이페이지</button>
+    </div>
+    <h1 class="pagetitle">약 검색하기</h1>
+    <form id="reach_Inform" class="such_In">
+        <input type="text" placeholder="궁금하신 약의 이름을 적어주세요." class="such_Inp"/>
+        <button onclick="" class="such_Butt">검색</button>
     </form>
     <div id="reach_img" class="parentStyle">
 
     </div>
-    <div id="reach_value">
+    <div id="reach_value" class="valuestyle">
 
     </div>
     <script src="InformationScreenJ.js"></script>
