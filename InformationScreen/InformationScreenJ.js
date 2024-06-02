@@ -19,12 +19,11 @@ async function getJSONfromAPI(search_m_name) {
       
       console.log(jsonData["body"]["items"])
       
-      //const userInput = prompt("약의 이름을 입력하세요:");
       const userInput = search_m_name;
       const selectedItem = items.find(item => item.itemName === userInput);
       
+
       if (selectedItem) {
-       // displayImage(selectedItem.itemImage);
         displayReachEnd(selectedItem);
       } else {
         parent3.innerText = "일치하는 약이 없습니다.";
