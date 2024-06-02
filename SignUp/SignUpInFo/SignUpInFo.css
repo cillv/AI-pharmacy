@@ -78,7 +78,7 @@ input::placeholder {
   color: #9e9c9c;
 }
 body {
-  background: #ffffff;
+  background: #cddaa8;
   color: #111;
   font-weight: 400;
   font-size: 1em;
@@ -93,7 +93,7 @@ body {
   margin: 1em;
   padding: 1em 2em;
   border: none;
-  background: none;
+  background: #ffffff; /* 버튼 배경색을 흰색으로 설정 */
   color: inherit;
   vertical-align: middle;
   position: relative;
