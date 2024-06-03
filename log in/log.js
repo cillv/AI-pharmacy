@@ -23,20 +23,13 @@ async function loginSever(userID, userPW) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: userID,
-          password: userPW
+          "username": userID,
+          "password": userPW
         }),
       });
   
       const data = await res.json();
       console.log(data);
-      if (response.access) {
-        localStorage.setItem('login-token-access', response.access);
-      }
-      if (response.access) {
-        localStorage.setItem('login-token-access', response.access);
-      }
-
       alert("로그인이 완료되었습니다.")
     } catch (error) {
       console.error("네트워크 요청 실패:", error);
