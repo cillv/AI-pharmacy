@@ -36,28 +36,25 @@ function make_account() {
 }
 
 async function signUp(userID, userPW, userEmail, userName) {
-  const BASE_URL = "http://192.168.0.50:8000/";
+  const BASE_URL = "http://192.168.0.204:8000/";
   try {
     const res = await fetch(BASE_URL + "api/v1/users/", {
-      mode: "cors", // "no-cors"를 "cors"로 변경
+      mode: "cors", 
       method: "POST",
       headers: {
-        "Content-Type": "application/json", // 헤더 추가
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         username: userID,
-        password: userPW, // "passward"를 "password"로 수정
+        password: userPW, 
         name: userName,
         email: userEmail,
       }),
     });
 
-    if (!res.ok) {
-      throw new Error(`서버 응답 에러: ${res.statusText}`);
-    }
-
     const data = await res.json();
     console.log(data);
+    alert("회원가입이 완료되었습니다.")
   } catch (error) {
     console.error("네트워크 요청 실패:", error);
     alert("회원가입 중 오류가 발생했습니다. 나중에 다시 시도해주세요.");
