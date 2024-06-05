@@ -3,16 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI-pharmacy</title>
+    <title>AI_Pharmacy</title>
+    <link rel="stylesheet" href="main.css" />
   </head>
-  <body style="background-color: #e9fff4">
-    <h2>AI 약국 홈페이지에 오신 것을 환영합니다!</h2>
-    <div>
-      <h2>로그인하기</h2>
-      <h2>마이페이지</h2>
+  <body>
+    <div class="top-lines"></div>
+    <div class="nav-buttons">
+      <button onclick="location.href='../../log in/log.html'">로그인</button>
+      <button onclick="location.href='../../SignUp/SignUpLaw/SignUPLaw.html'">
+        회원가입
+      </button>
+      <button onclick="location.href='../../Mypage/Mypage.html'">
+        마이페이지
+      </button>
     </div>
-    <div>
-      <h2>주변 약국 위치 확인하기</h2>
+    <div class="ai-pharmacy" onclick="location.href='../../main/main.html'">
+      AI_Pharmacy
+    </div>
+    <div class="banner">
+      <img src="info logo.jpg" class="banner-image" />
+      <img src="info 2023 party.png" class="banner-image" />
+      <img src="info 2023 GO.png" class="banner-image" />
+    </div>
+    <div class="btn-container">
+      <div onclick="location.href='../../log in/log.html'" class="btn-3d green">
+        약 검색
+      </div>
+      <div onclick="location.href='../../log in/log.html'" class="btn-3d green">
+        진단하기
+      </div>
+      <div onclick="location.href='../../log in/log.html'" class="btn-3d green">
+        약국 지도
+      </div>
     </div>
     <script src="main.js"></script>
   </body>
