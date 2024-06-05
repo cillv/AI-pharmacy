@@ -10,7 +10,8 @@
     <div class="top-lines"></div>
     <div class="ai-pharmacy">AI-Pharmacy</div>
     <div class="nav-buttons">
-      <button onclick="location.href='../../log in/log.html'">로그인</button>
+      <button onclick="location.href='../../log in/log.html'" id="loginB">로그인</button>
+      <button class="hidden"  id="logoutB">로그아웃</button>
       <button onclick="location.href='../../SignUp/SignUpLaw/SignUPLaw.html'">
         회원가입
       </button>
@@ -18,20 +19,26 @@
         마이페이지
       </button>
     </div>
-    <h1 class='title'>My page</h1>
+    <h1 class='title'>My page</h1> 
+    <div id="benner" class="bennerS">
+      <img id="user_img" class="UseIS"/>
+    </div>
     <div id="notlogin" class="notlogin">
         <h2>본 페이지는 로그인하셔야 이용 가능한 페이지입니다.</h2>
         <button onclick="location.href='../log in/log.html'">로그인 하러 가기</button>
     </div>
     <div id="yeslogin" class="hidden" >
-        <div id="goDoctor" class="bax" style="float: left;"> 
-            <h2 style="margin-bottom: 5%;">AI 약 진단 받으러 가기</h2>
-            <button onclick="location.href='../Mypage/AI doctor/AIdoctor.html'">약 진단 받으러 가기</button>
-        </div>
+      <div id="mypageFL">
+        <button>구매 내역 확인하기</button>
+        <button>구매 일 확인하기</button>
+        <button>진단 내역 확인하기</button>
+      </div>
+      <div id="contentM">
         <div id="buyhistory" class="bax" style="float: right;">
-            <h2 style="margin-bottom: 5%;">구매 내역 확인하기</h2>
-            <button onclick="location.href='../Mypage/buyinfo/buyinfo.html'">구매 내역 확인하기</button>
+          <h2 style="margin-bottom: 5%;">구매 내역 확인하기</h2>
+          <button onclick="location.href='../Mypage/buyinfo/buyinfo.html'">구매 내역 확인하기</button>
         </div>
+      </div>
     </div>
 <script src="Mypage.js"></script>
 </body>
