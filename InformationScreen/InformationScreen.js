@@ -3,31 +3,57 @@ const reach_InForm_Name = document.querySelector("#reach_Inform input");
 const parent = document.querySelector("#reach_img");
 const parent3 = document.querySelector("#reach_value");
 
-async function getSeverAPI(){
-  const BASE_URL = "https://192.168.0.67:8000/";
+function getInfo(search_m_name){
+  const m_name = search_m_name;
+  let PAGENUMBER = 1;
+  let getdata = getSeverAPI(PAGENUMBER, m_name);
+  console.log(PAGENUMBER);
+  while(getdata != null){
+    PAGENUMBER += 1;
+    console.log(PAGENUMBER);
+    getSeverAPI(PAGENUMBER, m_name);
+    if(PAGENUMBER>=5){
+    //if (PAGENUMBER>=467){
+      alert("일치하는 약이 존재하지 않습니다.");
+      break;
+    }
+  }
+  alert("검색 완료")
+}
+
+async function getSeverAPI(PAGENUMBER, m_name){
+  let pgnum = PAGENUMBER;
+  const BASE_URL = "http://192.168.0.67:8000/";
+  reset_reach();
+
+
   try {
-    const res = await fetch(BASE_URL + "api/v1/medicines/", {
+    const res = await fetch(BASE_URL + "api/v1/medicines/?page="+String(pgnum), {
       mode: "cors", 
       method: "Get",
       headers: {
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: userID,
-        password: userPW, 
-        name: userName,
-        email: userEmail,
-      }),
+      }
     });
 
     const data = await res.json();
     console.log(data);
-    alert("검색 완료되었습니다.")
+
+
+    const userInput = m_name;
+    const selectedItem = data.find(Object => Object.itemName === userInput);
+
+    if (selectedItem) {
+      displayReachEnd(selectedItem);
+    } else {
+      parent3.innerText = "일치하는 약이 없습니다.";
+    }
+
+    return data;
   } catch (error) {
     console.error("네트워크 요청 실패:", error);
     alert("검색 중 오류가 발생했습니다. 나중에 다시 시도해주세요.");
   }
-
 }
 
 async function getJSONfromAPI(search_m_name) {
@@ -48,7 +74,6 @@ async function getJSONfromAPI(search_m_name) {
       
       const userInput = search_m_name;
       const selectedItem = items.find(item => item.itemName === userInput);
-      
 
       if (selectedItem) {
         displayReachEnd(selectedItem);
@@ -99,7 +124,8 @@ async function getJSONfromAPI(search_m_name) {
 function reach_name(event){
   event.preventDefault();
   const search_m_name = reach_InForm_Name.value;
-  getJSONfromAPI(search_m_name);
+  //getJSONfromAPI(search_m_name);
+  getInfo(search_m_name);
 }
 
-reach_InForm.addEventListener("submit", reach_name);
+reach_InForm.addEventListener("submit", reach_name);;
