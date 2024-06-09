@@ -3,6 +3,33 @@ const reach_InForm_Name = document.querySelector("#reach_Inform input");
 const parent = document.querySelector("#reach_img");
 const parent3 = document.querySelector("#reach_value");
 
+async function getSeverAPI(){
+  const BASE_URL = "https://192.168.0.67:8000/";
+  try {
+    const res = await fetch(BASE_URL + "api/v1/medicines/", {
+      mode: "cors", 
+      method: "Get",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: userID,
+        password: userPW, 
+        name: userName,
+        email: userEmail,
+      }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+    alert("검색 완료되었습니다.")
+  } catch (error) {
+    console.error("네트워크 요청 실패:", error);
+    alert("검색 중 오류가 발생했습니다. 나중에 다시 시도해주세요.");
+  }
+
+}
+
 async function getJSONfromAPI(search_m_name) {
   const baseurl = "http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList";
   const key = "kOigE0Z%2FlrmroG%2B4zTcAY6MkIaeAdMBx0arSSrwWfuqmTIuCyNq3nTnRXfmxYBcUyBUzt5U5H8frcJatTCBABA%3D%3D";
