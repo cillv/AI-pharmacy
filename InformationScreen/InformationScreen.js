@@ -30,7 +30,7 @@ let PAGENUMBER = 1;
 async function getSeverAPI(PAGENUMBER, m_name, F_type){
   let pgnum = PAGENUMBER;
   let Mname = m_name;
-  const BASE_URL = "http://192.168.0.204:8000/";
+  const BASE_URL = "http://192.168.0.44:8000/";
   //reset_reach();
   try {
     const res = await fetch(BASE_URL + `api/v1/medicines/?page=${String(pgnum)}&search=${Mname}`, {
@@ -57,7 +57,7 @@ async function getSeverAPI(PAGENUMBER, m_name, F_type){
     //   displayReachEnd(selectedItem);    } */
 
     if (F_type=="list"){
-      for(let i=0; i<10; i++){
+      for(var i=0; i<10; i++){
         makeBox(i, data[i].name);
         //getMedicinesInfo(data[i].id);
       }
@@ -158,19 +158,19 @@ function n_drawlist(PAGENUMBER){
 }
 
 function makeBox(i, name){
-  console.log(i)
-  if(1<=i<5){
+  
+  //if(0<=i<4){
     const newDiv1 = document.createElement('div');
     MLB_1.appendChild(newDiv1);
-    newDiv1.id = i;
+    newDiv1.id = i+1;
     newDiv1.innerHTML = `${name}`
-  }
-  if(5<=i<10){
-    const newDiv2 = document.createElement('div');
-    MLB_2.appendChild(newDiv2);
-    newDiv2.id = i;
-    newDiv2.innerHTML = `${name}`
-  }
+//  }
+  // if(5<=i<10){
+  //   const newDiv2 = document.createElement('div');
+  //   MLB_2.appendChild(newDiv2);
+  //   newDiv2.id = i+1;
+  //   newDiv2.innerHTML = `${name}`
+  // }
 }
 
 
@@ -178,3 +178,5 @@ function makeBox(i, name){
 function addInformation(name, company, main_ingredient, efficacy, usage, need_to_know, cautions){
 
 }*/
+
+n_drawlist(1);
