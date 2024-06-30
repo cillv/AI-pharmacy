@@ -1,3 +1,7 @@
+const BASE_URL = fetch("../url.json")
+  .then((response) => response.json())
+  .then((json) => json.BASE_URL);
+
 const login_button = document
   .querySelector("#logioB")
   .addEventListener("click", loginstart);
@@ -13,13 +17,15 @@ function loginstart() {
 }
 
 async function loginSever(userID, userPW) {
-  const BASE_URL = "http://192.168.0.67:8000/";
   try {
-    const res = await fetch(BASE_URL + "api/v1/users/token", {
+    const res = await fetch(BASE_URL + "api/v1/users/token/", {
       mode: "cors",
       method: "POST",
+      credentials: "include",
+
       headers: {
         "Content-Type": "application/json",
+        // Authorization: "Bearer " + data.access,
       },
       body: JSON.stringify({
         username: userID,
@@ -29,10 +35,28 @@ async function loginSever(userID, userPW) {
 
     const data = await res.json();
     console.log(data);
+    localStorage.setItem("access", data.access);
+    localStorage.setItem("refresh", data.refresh);
+    console.log(localStorage.getItem("access"));
     alert("로그인이 완료되었습니다.");
-    // window.location.href = "../main/main.html";
   } catch (error) {
     console.error("네트워크 요청 실패:", error);
     alert("로그인 중 오류가 발생했습니다. 나중에 다시 시도해주세요.");
+  }
+  try {
+    const res = await fetch(BASE_URL + "api/v1/users/me", {
+      mode: "cors",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("access"),
+      },
+    });
+    const data = await res.json();
+    localStorage.setItem("name", data["name"]);
+    window.location.href = "../main/main.html";
+  } catch (error) {
+    console.error("네트워크 요청 실패:", error);
+    alert("회원가입 중 오류가 발생했습니다. 나중에 다시 시도해주세요.");
   }
 }

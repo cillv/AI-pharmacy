@@ -11,3 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
   setInterval(showNextImage, 3000);
   images[currentIndex].classList.add("active");
 });
+console.log(localStorage.getItem("name"));
+const username = localStorage.getItem("name");
+document.getElementById("usernameDisplay").innerText = username;
