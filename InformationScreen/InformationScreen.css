@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+
+/* 타이틀 */
 .ai-pharmacy {
     position: absolute;
     font-family: "Playfair Display", serif;
@@ -56,18 +58,20 @@ background-color: gray;
     color: black;
 }
 
+/* 페이지 타이틀 */
 .pagetitle{
     margin-top: 10%;
     text-align: center;
 }
 
+/* form */
 .such_In{
     margin-top: 3%;
     margin-bottom: 5%;
     text-align: center;
 }
 
-.such_Inp{
+.such_In input{
     width : 50%;
     height : 30px;
 }
@@ -79,10 +83,7 @@ background-color: gray;
     padding-left: 6.5px;
 }
 
-.hidden{
-    display: none;
-}
-
+/* 검색값 */
 .parentStyle{
     max-Width : 500px;
     max-Height : 500px;
@@ -93,4 +94,46 @@ background-color: gray;
 
 .valuestyle{
     text-align: center;
+}
+
+/* 약목록 */
+.BLM{
+    background-color: white;
+}
+
+.BLM h1{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+}
+
+.LM{
+    width: 100%;
+    height: 30%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: flex;
+}
+
+.LMB{
+    border: 1px solid black;
+    width: 20%;
+    height: 20%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.BLM{
+    width: 100%;
+    height: 30%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+}
+
+/* 기능성 */
+.hidden{
+    display: none;
 }

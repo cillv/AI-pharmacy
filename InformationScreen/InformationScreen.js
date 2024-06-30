@@ -2,33 +2,38 @@ const reach_InForm = document.querySelector("#reach_Inform");
 const reach_InForm_Name = document.querySelector("#reach_Inform input");
 const parent = document.querySelector("#reach_img");
 const parent3 = document.querySelector("#reach_value");
+const parent4 = document.querySelector("#list_M");
+const MLB_1 = document.querySelector("#oneline");
+const MLB_2 = document.querySelector("#twoline");
 
-function getInfo(search_m_name){
+let PAGENUMBER = 1;
+
+//약 검색 뻘짓한거
+/*function getInfo(search_m_name){
   const m_name = search_m_name;
-  let PAGENUMBER = 1;
-  let getdata = getSeverAPI(PAGENUMBER, m_name);
-  console.log(PAGENUMBER);
-  while(getdata != null){
+  for(let i=1; i>465; i++){
+    let PAGENUMBER = i;
+    getSeverAPI(PAGENUMBER, m_name)
+    console.log("Get() : "+s_state)
     PAGENUMBER += 1;
     console.log(PAGENUMBER);
-    getSeverAPI(PAGENUMBER, m_name);
-    if(PAGENUMBER>=5){
-    //if (PAGENUMBER>=467){
-      alert("일치하는 약이 존재하지 않습니다.");
-      break;
-    }
+    console.log(s_state);
+    if (s_state == true){break;}
+    else if (PAGENUMBER>465){
+        alert("일치하는 약이 존재하지 않습니다.");
+        break;}
   }
+  getSeverAPI(PAGENUMBER, m_name);
   alert("검색 완료")
-}
+}*/
 
-async function getSeverAPI(PAGENUMBER, m_name){
+async function getSeverAPI(PAGENUMBER, m_name, F_type){
   let pgnum = PAGENUMBER;
-  const BASE_URL = "http://192.168.0.67:8000/";
-  reset_reach();
-
-
+  let Mname = m_name;
+  const BASE_URL = "http://192.168.0.204:8000/";
+  //reset_reach();
   try {
-    const res = await fetch(BASE_URL + "api/v1/medicines/?page="+String(pgnum), {
+    const res = await fetch(BASE_URL + `api/v1/medicines/?page=${String(pgnum)}&search=${Mname}`, {
       mode: "cors", 
       method: "Get",
       headers: {
@@ -37,18 +42,27 @@ async function getSeverAPI(PAGENUMBER, m_name){
     });
 
     const data = await res.json();
-    console.log(data);
+    //console.log(data);
 
+    //약 검색 뻘짓2
+    /* const userInput = m_name;
+    // var selectedItem;
+    
+    // for (let i = 0; i < 10; i++){
+    //   if(data[i].name == userInput){selectedItem = data[i]};
+    //   };
+      
+    // if (selectedItem) {
+    //   window.localStorage.getItem("S_state","true");
+    //   displayReachEnd(selectedItem);    } */
 
-    const userInput = m_name;
-    const selectedItem = data.find(Object => Object.itemName === userInput);
-
-    if (selectedItem) {
-      displayReachEnd(selectedItem);
-    } else {
-      parent3.innerText = "일치하는 약이 없습니다.";
+    if (F_type=="list"){
+      for(let i=0; i<10; i++){
+        makeBox(i, data[i].name);
+        //getMedicinesInfo(data[i].id);
+      }
     }
-
+    
     return data;
   } catch (error) {
     console.error("네트워크 요청 실패:", error);
@@ -56,71 +70,63 @@ async function getSeverAPI(PAGENUMBER, m_name){
   }
 }
 
-async function getJSONfromAPI(search_m_name) {
-  const baseurl = "http://apis.data.go.kr/1471000/DrbEasyDrugInfoService/getDrbEasyDrugList";
-  const key = "kOigE0Z%2FlrmroG%2B4zTcAY6MkIaeAdMBx0arSSrwWfuqmTIuCyNq3nTnRXfmxYBcUyBUzt5U5H8frcJatTCBABA%3D%3D";
-  const params = { type: "json", numOfRows: 50 };
-  const queryString = new URLSearchParams(params).toString();
-  const requrl = `${baseurl}?serviceKey=${key}&${queryString}`;
-
-  reset_reach();
-
+async function getMedicinesInfo(m_id){
+  let id = m_id
+  const BASE_URL = "http://192.168.0.204:8000/";
   try {
-      const response = await fetch(requrl);
-      const jsonData = await response.json();
-      const items = jsonData.body.items;
-      
-      console.log(jsonData["body"]["items"])
-      
-      const userInput = search_m_name;
-      const selectedItem = items.find(item => item.itemName === userInput);
-
-      if (selectedItem) {
-        displayReachEnd(selectedItem);
-      } else {
-        parent3.innerText = "일치하는 약이 없습니다.";
+    const res = await fetch(BASE_URL + `api/v1/medicines/${String(m_id)}`, {
+      mode: "cors", 
+      method: "Get",
+      headers: {
+        "Content-Type": "application/json",
       }
-    } catch (error) {
-      console.error("API 요청 중 오류 발생:", error);
-    }
-  }
-  
-  function reset_reach(){
-    parent3.innerHTML = '';
-    parent.style.display ='none';
-  }; 
+    });
 
-  function displayReachEnd(selectedItem) {
-    const imageUrl = selectedItem.itemImage
-    const imgElement = document.createElement("img");
+    const data = await res.json();
+    console.log("getMI : "+ data.name);
     
-    parent.style.display = ''
-    
-    imgElement.src = imageUrl;
-    imgElement.style.width = "1000px";
-    imgElement.style.height = "500px";
-    
-    parent.append(imgElement);
-
-    displayText(selectedItem)
+    return data;
+  } catch (error) {
+    console.error("네트워크 요청 실패:", error);
+    alert("검색 중 오류가 발생했습니다. 나중에 다시 시도해주세요.");
   }
-  
-  function displayText(selectedItem) {
-    // 약정보 요소 추가
-    const parent3 = document.querySelector("#reach_value");
+}
 
-    //새로 검색시 한 번 초기화
-    parent3.innerHTML = ''
+//약검색 뻘짓3
+/*function reset_reach(){
+  parent3.innerHTML = '';
+  parent.style.display ='none';
+}; 
+
+function displayReachEnd(selectedItem) {
+  const imageUrl = selectedItem.itemImage
+  const imgElement = document.createElement("img");
+  
+  parent.style.display = ''
+  
+  imgElement.src = imageUrl;
+  imgElement.style.width = "1000px";
+  imgElement.style.height = "500px";
     
-    parent3.innerText += "약 이름 : " + selectedItem.itemName + "\n";
-    parent3.innerText += "약 복용상황 : " + selectedItem.efcyQesitm + "\n";
-    parent3.innerText +=  "약 주의상황 : " + selectedItem.atpnQesitm + "\n";
-  }
+  parent.append(imgElement);
+
+  displayText(selectedItem)
+}
+  
+function displayText(selectedItem) {
+  // 약정보 요소 추가
+  const parent3 = document.querySelector("#reach_value");
+
+  //새로 검색시 한 번 초기화
+  parent3.innerHTML = ''
+  
+  parent3.innerText += "약 이름 : " + selectedItem.name + "\n";
+  parent3.innerText += "제약사 : " + selectedItem.company + "\n"
+  parent3.innerText += "가격 : " + selectedItem.price + "\n"
+}*/
   
   
-  // API로부터 데이터를 가져온 후 호출됩니다.
-  
-  
+// API로부터 데이터를 가져온 후 호출됩니다.  
 function reach_name(event){
   event.preventDefault();
   const search_m_name = reach_InForm_Name.value;
@@ -128,4 +134,47 @@ function reach_name(event){
   getInfo(search_m_name);
 }
 
-reach_InForm.addEventListener("submit", reach_name);;
+//reach_InForm.addEventListener("submit", reach_name);
+
+
+// 약 목록 리스트
+function Back_Button(){
+  if (PAGENUMBER == 1){PAGENUMBER = 1;}
+  else {PAGENUMBER -= 1;}
+  
+  n_drawlist(PAGENUMBER);
+}
+
+function Next_Button(){
+  if (PAGENUMBER == 467){PAGENUMBER = 466;}
+  else {PAGENUMBER += 1;}
+
+  n_drawlist(PAGENUMBER);
+}
+
+function n_drawlist(PAGENUMBER){
+  let data = getSeverAPI(PAGENUMBER, "", "list");
+  console.log(data);
+}
+
+function makeBox(i, name){
+  console.log(i)
+  if(1<=i<5){
+    const newDiv1 = document.createElement('div');
+    MLB_1.appendChild(newDiv1);
+    newDiv1.id = i;
+    newDiv1.innerHTML = `${name}`
+  }
+  if(5<=i<10){
+    const newDiv2 = document.createElement('div');
+    MLB_2.appendChild(newDiv2);
+    newDiv2.id = i;
+    newDiv2.innerHTML = `${name}`
+  }
+}
+
+
+/*  나중에 약 자세한 정보 표시
+function addInformation(name, company, main_ingredient, efficacy, usage, need_to_know, cautions){
+
+}*/

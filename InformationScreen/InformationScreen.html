@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head profile="http://192.168.0.67:8000/">
+  <head profile="http://192.168.0.204:8000/">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="InformationScreen.css" />
@@ -17,7 +17,7 @@
       </button>
     </div>
     <h1 class="pagetitle">약 검색하기</h1>
-    <form id="reach_Inform" class="such_In">
+    <form id="reach_Inform" class="such_In" >
       <input
         type="text"
         placeholder="궁금하신 약의 이름을 적어주세요."
@@ -27,6 +27,17 @@
     </form>
     <div id="reach_img" class="parentStyle"></div>
     <div id="reach_value" class="valuestyle"></div>
+    <div id="list_M" class = "BLM">
+      <h1>약 목록</h1>
+      <div id="oneline" class="LM">
+        
+      </div>
+      <div id="twoline" class="LM"></div>
+      <div class="BLM">
+        <button onclick="Back_Button()">이전</button>
+        <button onclick="Next_Button()">다음</button>
+      </div>
+    </div>
     <script src="InformationScreen.js"></script>
   </body>
 </html>
