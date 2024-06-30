@@ -8,6 +8,12 @@ const MLB_2 = document.querySelector("#twoline");
 
 let PAGENUMBER = 1;
 
+
+
+console.log(BASE_URL)
+console.log(typeof(BASE_URL))
+
+
 //약 검색 뻘짓한거
 /*function getInfo(search_m_name){
   const m_name = search_m_name;
@@ -30,7 +36,7 @@ let PAGENUMBER = 1;
 async function getSeverAPI(PAGENUMBER, m_name, F_type){
   let pgnum = PAGENUMBER;
   let Mname = m_name;
-  const BASE_URL = "http://192.168.0.44:8000/";
+  //const BASE_URL = "http://192.168.0.44:8000/";
   //reset_reach();
   try {
     const res = await fetch(BASE_URL + `api/v1/medicines/?page=${String(pgnum)}&search=${Mname}`, {
