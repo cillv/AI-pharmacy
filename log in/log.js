@@ -1,7 +1,3 @@
-const BASE_URL = fetch("../url.json")
-  .then((response) => response.json())
-  .then((json) => json.BASE_URL);
-
 const login_button = document
   .querySelector("#logioB")
   .addEventListener("click", loginstart);

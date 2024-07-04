@@ -36,7 +36,6 @@ function make_account() {
 }
 
 async function signUp(userID, userPW, userEmail, userName) {
-  const BASE_URL = "http://192.168.0.44:8000/";
   try {
     const res = await fetch(BASE_URL + "api/v1/users/", {
       mode: "cors",
