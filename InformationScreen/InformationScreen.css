@@ -122,14 +122,22 @@ background-color: gray;
     text-align: center;
     margin: 1%;
     flex-wrap: wrap;
-    width: 10%;
+    width: 18%;
     height: 150px;
     border: 1px solid black;
 }
 
-.Listtext {
+.Listtext{
     width: 100%;
-    height: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Listtexth6{
+    width: 100%;
+    height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -143,7 +151,7 @@ background-color: gray;
 }
 
 .BLM{
-    width: 100%;
+    width: 98%;
     height: 30%;
     text-align: center;
 }

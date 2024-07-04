@@ -10,8 +10,7 @@ let PAGENUMBER = 1;
 async function getSeverAPI(PAGENUMBER, m_name, F_type){
   let pgnum = PAGENUMBER;
   let Mname = m_name;
-  //const BASE_URL = "http://192.168.0.44:8000/";
-  //reset_reach();
+
   try {
     const res = await fetch(BASE_URL + `api/v1/medicines/?page=${String(pgnum)}&search=${Mname}`, {
       mode: "cors", 
@@ -25,9 +24,13 @@ async function getSeverAPI(PAGENUMBER, m_name, F_type){
 
     if (F_type=="list"){
       for(var i=0; i<10; i++){
-        makeBox(i, data[i].name);
-        //getMedicinesInfo(data[i].id);
+        makeBox(data[i].id, data[i].name, data[i].price);
       }
+      console.log(PAGENUMBER)
+    }
+
+    if (F_type=="search"){
+      console.log(data.id)
     }
     
     return data;
@@ -38,61 +41,83 @@ async function getSeverAPI(PAGENUMBER, m_name, F_type){
 }
 
   
-// API로부터 데이터를 가져온 후 호출됩니다.  
+// 검색 기능
 function reach_name(event){
   event.preventDefault();
   const search_m_name = reach_InForm_Name.value;
-  //getJSONfromAPI(search_m_name);
+  console.log(search_m_name)
   getInfo(search_m_name);
+}
+
+function getInfo(m_name){
+  getSeverAPI("", m_name, "search")
 }
 
 
 // 약 목록 리스트
 function Back_Button(){
+  MLB.innerHTML= ""
+
   if (PAGENUMBER == 1){PAGENUMBER = 1;}
-  else {PAGENUMBER -= 1;}
+  else {PAGENUMBER -= 2;}
   
   n_drawlist(PAGENUMBER);
 }
 
 function Next_Button(){
+  MLB.innerHTML= ""
+
   if (PAGENUMBER == 467){PAGENUMBER = 466;}
-  else {PAGENUMBER += 1;}
+  else {PAGENUMBER += 2;}
 
   n_drawlist(PAGENUMBER);
 }
 
 function n_drawlist(PAGENUMBER){
-  for (let i = 0; i < 6; i++){
-    let data = getSeverAPI(PAGENUMBER+i, "", "list");
-    console.log(data);
+  for (let i = 0; i < 2; i++){
+    getSeverAPI(PAGENUMBER+i, "", "list");
   }
 }
 
-function makeBox(i, name){
-    //if (i < 10){
-      const newDiv1 = document.createElement('div');
-      const newMName = document.createElement('h5');
+function makeBox(Id, name, price){
+      const newDiv1 = document.createElement('div')
+      const newMName = document.createElement('h5')
+      const newMPrice = document.createElement('h5')
+
       MLB.appendChild(newDiv1);
       newDiv1.appendChild(newMName)
-      newDiv1.id = i+1;
+      newDiv1.appendChild(newMPrice)
+
+      newDiv1.id = Id
+
       newDiv1.classList.add("ListBa");
       newMName.innerHTML = `${name}`
-      
-      newMName.classList.add("Listtext")
+      newMPrice.innerHTML = `${price}원`
+      newMName.id = Id;
 
-    // }
-    // else if(i < 20){
-    //   const newDiv2 = document.createElement('div');
-    //   MLB.appendChild(newDiv2);
-    //   newDiv2.innerHTML = `${name}`
-    // }
+      newMName.classList.add("Listtext")
+      newMPrice.classList.add("Listtexth6")
+    } 
+
+function clickBox(id){
+  console.log(id)
 }
 
+// function addInformation(name, company, main_ingredient, efficacy, usage, need_to_know, cautions){
+//   console.log(name, company, main_ingredient, efficacy, usage, need_to_know, cautions)
+// }
 
-/*  나중에 약 자세한 정보 표시
-function addInformation(name, company, main_ingredient, efficacy, usage, need_to_know, cautions){
+function clickCheck(){
+  const boxs = document.querySelectorAll(".LM > div");
 
-}*/
+boxs.forEach((el, index) => {
+  el.onclick = () => {
+    clickBox(el.id);
+  }
+}); 
+}
 
 n_drawlist(1);
+
+MLB.addEventListener('click', clickCheck);
+reach_InForm.addEventListener('submit', reach_name);
