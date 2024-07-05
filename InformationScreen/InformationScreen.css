@@ -85,11 +85,20 @@ background-color: gray;
 
 /* 검색값 */
 .parentStyle{
-    max-Width : 500px;
-    max-Height : 500px;
-    overflow : hidden;
-    text-align: center;
-    margin: 0 auto;
+    width: 100%;
+    height: 10%;
+    margin: 0.1%;
+    border: 1px solid black;
+    display: flex;
+}
+
+.parentText{
+    width: 30%;
+    height: 100%;
+    margin: 0.1%;
+    display: inline;
+    align-items: center;
+    flex-basis: auto;
 }
 
 .valuestyle{
@@ -98,7 +107,6 @@ background-color: gray;
 
 /* 약목록 */
 .BLM{
-    background-color: white;
     margin: 1%;
 }
 

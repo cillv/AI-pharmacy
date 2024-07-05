@@ -6,15 +6,12 @@
     <link rel="stylesheet" href="InformationScreen.css" />
     <title>약 정보</title>
   </head>
-  <body style="background-color: #cddaa8">
-    <div class="ai-pharmacy">AI_Pharmacy</div>
+  <body style="background-color: white;">
+    <div class="ai-pharmacy" onclick="location.href='../main/main.html'">AI_Pharmacy</div>
     <div class="top-lines"></div>
     <div class="nav-buttons">
-      <button onclick="location.href='../main/main.html'">메인</button>
       <button onclick="location.href='../log in/log.html'">로그인</button>
-      <button onclick="location.href='../Mypage/Mypage.html'">
-        마이페이지
-      </button>
+      <button onclick="location.href='../Mypage/Mypage.html'">마이페이지</button>
     </div>
     <h1 class="pagetitle">약 검색하기</h1>
     <form id="reach_Inform" class="such_In">
@@ -25,14 +22,13 @@
       />
       <button onclick="" class="such_Butt">검색</button>
     </form>
-    <div id="reach_img" class="parentStyle"></div>
-    <div id="reach_value" class="valuestyle"></div>
     <div id="list_M" class="BLM">
       <h1>약 목록</h1>
-      <div id="M_list" class="LM">      </div>
+      <div id="M_list" class="LM"> </div>
       <div class="BLM">
-        <button onclick="Back_Button()">이전</button>
-        <button onclick="Next_Button()">다음</button>
+        <button id="backB" onclick="Back_Button()">이전</button>
+        <button id="nextB" onclick="Next_Button()">다음</button>
+        <button id="canceB" onclick="cancesearch()" class="hidden">취소</button>
       </div>
     </div>
     <script src="../url.js"></script>
