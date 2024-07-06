@@ -9,6 +9,22 @@ const canceB = document.querySelector("#canceB");
 
 let PAGENUMBER = 1;
 
+function addmenu(){
+  //const body = document.body
+  const menu = document.getElementById("menu")
+  const url = '../menu/menu.html'
+
+  const newDiv = document.createElement('iframe')
+  //body.appendChild(newDiv)
+  newDiv.src = url
+  newDiv.style.width = "100%"
+  newDiv.style.height = "auto"
+
+  menu.appendChild(newDiv); 
+}
+
+addmenu()
+
 async function getSeverAPI(PAGENUMBER, m_name, id, F_type){
   try {
     url = `${BASE_URL}api/v1/medicines/`

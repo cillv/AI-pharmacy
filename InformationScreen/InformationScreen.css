@@ -6,6 +6,17 @@
 
 
 /* 타이틀 */
+.menus{
+    width: 100%;
+    height: 5px;
+}
+
+iframe {
+    display: flex;
+    height: 100%;
+    border: none; /* iframe의 경계를 제거 */
+}
+
 .ai-pharmacy {
     position: absolute;
     font-family: "Playfair Display", serif;
