@@ -7,7 +7,7 @@
 .body {
     min-height: 100vh;
     max-width: 100%;
-    background-color: #cddaa8; 
+    background-color: white; 
     margin: 0 auto;
 }
 
@@ -67,7 +67,6 @@ color: black;
     height: 15%;
     padding-top: 1%;
     padding-bottom: 1%;
-    background-color: #69911a;
     text-align: center;
 }
 
@@ -91,23 +90,23 @@ color: black;
     margin-bottom: 1%;
     width: 100%;
     height: 40%;
-    background-color: #a0ca4d;
+    text-align: center;
 }
 
 .bennerS > img{
+    text-align: center;
     padding-top: 5%;
     padding-left: 2%;
     width: 10%;
     height: 10%;
-    background-color: #a0ca4d;
 }
 
-.bennerS > h3{
+.UseIS{
+    text-align: center;
     padding-left: 2%;
-    width: 10%;
+    width: 100%;
     height: 10%;
     text-align: center;
-    background-color: #a0ca4d;
 }
 
 .detail_h{
@@ -142,11 +141,28 @@ color: black;
     margin-bottom: 3%;
     margin-left: 1%;
     margin-right: 2%;
-    padding-top: 10%;
-    padding-bottom: 10%;
     border:solid black;
     text-align: center;
-    background-color: white;
+    
+}
+
+.buyDiv{
+    display:inline-block;
+    width: 100%;
+    height: 5%;
+    flex-direction: column;
+    border: solid gray;
+    justify-content: center;
+    align-items: center;
+}
+
+.buyDivText{
+    float: left;
+    margin: 1%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 숨기기 기능*/
