@@ -1,0 +1,66 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+}
+
+div{
+    margin: 1%;
+}
+
+.jjj{
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    display: flex;
+}
+
+.jjj div{
+    background-color: white;
+    margin-left:auto;
+}
+
+.jjj div button{
+    width: 100%;
+    height: 100%;
+}
+    
+.onediv{
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    display: flex;
+}
+    
+.onediv div{
+    background-color: white;
+    margin-left:auto;
+}
+ 
+.onediv div button{
+    width: 100%;
+    height: 50%;
+}
+
+.onediv div input{
+    width: 100%;
+    height: 50%;
+}
+
+.group{
+    border: solid black;
+}
+
+.group div h3{
+    text-align: center;
+    background-color: gainsboro;
+}
+
+/* 기능성 */
+.hidden{
+    display: none;
+}

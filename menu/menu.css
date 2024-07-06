@@ -1,0 +1,59 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* 타이틀 */
+.ai-pharmacy {
+    position: absolute;
+    font-family: "Playfair Display", serif;
+    top: 8px;
+    left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    font-weight: 900; /* 굵기 조절 */
+  }
+  
+
+.top-lines {
+    width: 100%;
+    height: auto; /* 20px top margin + 2 * 2px line thickness + 20px between lines */
+    position: absolute;
+    top: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+.top-lines::after {
+content: "";
+display: block;
+height: 1px;
+background-color: gray;
+}
+
+
+.nav-buttons {
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-buttons button {
+    background-color: transparent;
+    color: gray;
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.nav-buttons button:hover {
+    color: black;
+}
