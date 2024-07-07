@@ -60,10 +60,10 @@ async function getSeverAPI(PAGENUMBER, m_name, id, F_type){
         addInformation(data[i].id)
       }
     }else if (F_type=="getinfo"){
-      draw_search_list(data.id, data.name, data.price, data.company)
-    }else if (F_type=="detail"){
-      detail_info_get(data)
-    }
+      draw_search_list(data.id, data.name, data.price, data.company)}
+    // }else if (F_type=="detail"){
+    //   detail_info_get(data)
+    // }
 
     return data;
   } catch (error) {
@@ -116,14 +116,14 @@ function draw_search_list(id, name, price, company){
   canceB.classList.remove("hidden")
 }
 
-//취소버튼
+//완료 버튼
 function cancesearch(){
   nextB.classList.remove("hidden")
   backB.classList.remove("hidden")
   canceB.classList.add("hidden")
 
-  MLB.innerHTML=""
-  n_drawlist(PAGENUMBER)
+  //MLB.innerHTML=""
+  //n_drawlist(PAGENUMBER)
 }
 
 // 약 목록 리스트
@@ -186,16 +186,24 @@ function clickCheck(){
 }
     
 function clickBox(id){
-  getSeverAPI(null, null, id, "detail")
+  //getSeverAPI(null, null, id, "detail")
+  A_D_NEED_ID = id
+  detail_info_get()
 }
 
-function detail_info_get(data){
+function detail_info_get(){
   console.log(data)
 /* serial_number, name, company, main_ingredient, efficacy, usage, need_to_know, cautions, beware_food, side_effect, how_to_store, price */
   MLB.innerHTML=""
 
   const InfoDiv = document.createElement('div')
   MLB.appendChild(InfoDiv)
+
+  const InfoIframe = document.createElement('iframe')
+  InfoDiv.appendChild(InfoIframe)
+
+  InfoIframe.src = "../About_Description/A_D.html"
+  InfoIframe.style.border = "none"
 
   nextB.classList.add("hidden")
   backB.classList.add("hidden")

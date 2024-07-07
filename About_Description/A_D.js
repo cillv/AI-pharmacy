@@ -110,7 +110,7 @@ function drawA_D(data){
     m_beware_food.innerHTML = `${data.beware_food}`
 }
 
-//getSeverAPI(id, "get")
+getSeverAPI(A_D_NEED_ID, "get")
 
 /*
 var m_data = {
