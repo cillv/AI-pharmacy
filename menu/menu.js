@@ -48,6 +48,20 @@ function GOlogout(){
     window.parent.location.reload()
 }
 
+function clickBox(){  
+    const openPopup = () => {
+      // 팝업을 띄울 페이지 URL
+      var popupURL = "../S_B/s_b.html";
+      // 팝업 창의 속성
+      var option = "width=600,height=400,scrollbars=yes";
+      // 팝업 열기
+      window.open(popupURL, "Popup", option);
+    }
+  
+    openPopup()
+  }
+
+
 logoutB.addEventListener('click', GOlogout);
 window.addEventListener("submit", login_state_check);
 login_state_check()
