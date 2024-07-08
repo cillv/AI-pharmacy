@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head profile="http://192.168.1.109:8000/">
+<head profile="http://192.168.0.90:8000/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Mypage.css" />
@@ -10,23 +10,15 @@
   <div class="menu">
     <iframe src="../menu/menu.html" class="menuf"></iframe>
   </div>
-  <!-- <div class="ai-pharmacy" onclick="location.href='../main/main.html'">AI-Pharmacy</div>
-  <div class="nav-buttons">
-    <button onclick="location.href='../../log in/log.html'" id="loginB">로그인</button>
-    <button class="hidden"  id="logoutB">로그아웃</button>
-    <button  id="mypageB" onclick="location.href='../Mypage/Mypage.html'">마이 페이지</button>
-  </div> -->
-  <!-- <div class="top-lines"></div> -->
     <h1 class='title'>My page</h1> 
+    <div id="benner" class="bennerS">
+      <!-- <img src="../Mypage/profile_img.png" alt="이미지불러오기 실패" class="UseIS" id="user_img"/> -->
+      <h3 id="username_h3" class="UseIS">User Name</h3>
+    </div>
     <div id="notlogin" class="notlogin">
       <h2>본 페이지는 로그인하셔야 이용 가능한 페이지입니다.</h2>
-      <button onclick="location.href='../log in/log.html'">로그인 하러 가기</button>
     </div>
     <div id="yeslogin" class="detail_h hidden">
-      <div id="benner" class="bennerS">
-        <img src="../Mypage/profile_img.png" alt="이미지불러오기 실패" class="UseIS" id="user_img"/>
-        <h3 id="username_h3" class="UseIS">User Name</h3>
-      </div>
       <div id="mypageFL" class="buttonList">
         <button onclick="DrawBuyHTML()">구매 내역</button>
         <button onclick="DrawDoctorHTML()">진단 내역</button>

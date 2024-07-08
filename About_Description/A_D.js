@@ -3,6 +3,14 @@
     즐겨찾기 저장
 */
 
+// access 토큰 만료되면 쓸거
+let token = localStorage.getItem("refresh")
+
+//진단 내역 받아올때 쓸 토큰
+let access = localStorage.getItem("access")
+
+const needLogIN = document.getElementById("needLogIN")
+
 const m_name = document.getElementById("m_name")
 const m_company = document.getElementById("m_company")
 const m_price = document.getElementById("m_price")
@@ -23,33 +31,31 @@ const m_number_input = document.getElementById("m_number")
 
 let check_MB_S = false
 
-
-//즐겨찾기
-function check_MB(){
-    // 즐겨찾기 비활성일 경우
-    if (check_MB_S == false){
-        check_MB_S = true
+function login_state_check(){
+    if (token == undefined && access == undefined){
+        needLogIN.classList.add("hidden")
     }
-    else {  //즐겨찾기 활성일 경우
-        check_MB_S = false
+    else{
+        console.log("draw my page")               //로그인이 됐을 때
+        needLogIN.classList.remove("hidden")
     }
-    console.log(check_MB_S)
 }
 
 //장바구니
 function putINB(){
     const m_number = document.getElementById("m_number").value
 
-    console.log(m_number)
+    console.log(":", typeof(m_number))
     if (m_number == null || m_number == 0){
         alert("수량을 반드시 1개 이상 입력해주세요.")
     }
     else{
         console.log(`장바구니에 ${m_number}개 담았습니다.`)
+        getSeverAPI(A_D_NEED_ID, "post", "putInB")
     }
 }
 
-async function getSeverAPI(id, type){
+async function getSeverAPI(id, type, how_use){
     try {
       url = BASE_URL
   
@@ -70,15 +76,29 @@ async function getSeverAPI(id, type){
         return data;
       }
       else if(type == "post"){
-        url += ``
+        console.log(typeof(m_number))
+        console.log(m_number)
+        if(how_use == "putInB"){
+            url += `api/v1/inventories/`
+        }
         const res = await fetch(url, {
             mode: "cors", 
-            method: "Get",
+            method: "Post",
             headers: {
                 "Content-Type": "application/json",
-            }
-            });
-      }
+                "Authorization": `Bearer ${access}`,
+            },
+            body: JSON.stringify({
+                medicine :`${Number(A_D_NEED_ID)}`,
+                quantity :`${Number(document.getElementById("m_number").value)}`,
+            }),
+        })
+        const data = await res.json();
+
+        console.log(data)
+
+        return data;
+    }
 
       return data;
     } catch (error) {
@@ -107,4 +127,5 @@ function drawA_D(data){
 
 var A_D_NEED_ID = localStorage.getItem("A_D_NEED_ID")
 console.log(A_D_NEED_ID)
-getSeverAPI(A_D_NEED_ID, "get")
+getSeverAPI(A_D_NEED_ID, "get", "load_info")
+login_state_check()
