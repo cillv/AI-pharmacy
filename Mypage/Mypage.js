@@ -1,34 +1,40 @@
 const NotLogIn = document.querySelector("#notlogin");
 const YesLogIn = document.querySelector("#yeslogin");
-const Benner = document.querySelector("#benner")
 
+const Benner = document.querySelector("#benner")
+const UserImg = document.querySelector("#user_img")
 const username_html = document.getElementById("username_h3");
 
 const contentBox = document.getElementById("contentM");
 
-// // access 토큰 만료되면 쓸거
-// let token = localStorage.getItem("refresh")
+let userName = localStorage.getItem("name")
 
-// //진단 내역 받아올때 쓸 토큰
-// let access = localStorage.getItem("access")
+// access 토큰 만료되면 쓸거
+let token = localStorage.getItem("refresh")
+
+//진단 내역 받아올때 쓸 토큰
+let access = localStorage.getItem("access")
 
 
-// function login_state_check(){
-//     if (token == null && access == null){
-//         login_state = false;
-//         console.log("not login")
-//     }
-//     else{
-//         login_state = true;
-//         console.log("yes login")
-//     }
-// }
+function login_state_check(){
+    if (token == null && access == null){
+        login_state = false;
+        console.log("not login")
+    }
+    else{
+        login_state = true;
+        console.log("yes login")
+    }
+}
 
 function drawPage(){
     if (login_state == false){                  //로그인이 안됐을 때
         YesLogIn.classList.add("hidden")
         NotLogIn.classList.remove("hidden")
+
         Benner.classList.add("hidden")
+        UserImg.classList.add("hidden")
+        username_html.classList.add("hidden")
     }else{                       
         console.log("draw my page")               //로그인이 됐을 때
         NotLogIn.classList.add("hidden")
@@ -36,8 +42,10 @@ function drawPage(){
         // loginB.classList.add("hidden")
         // logoutB.classList.remove("hidden")
         Benner.classList.remove("hidden")
+        UserImg.classList.remove("hidden")
+        username_html.classList.remove("hidden")
         // username 받아오기
-        let userName = localStorage.getItem("name")
+        
         username_html.innerHTML = `${userName}님 어서오세요. `
     }
 }
@@ -89,20 +97,6 @@ async function getSeverAPI(type){
       alert("검색 중 오류가 발생했습니다. 나중에 다시 시도해주세요.");
     }
   }
-
-// function GOlogout(){
-//     logoutB.classList.add("hidden")
-//     loginB.classList.remove("hidden")
-//     login_state = false
-//     drawPage()
-// }
-
-
-
-// logoutB.addEventListener('click', GOlogout);
-// window.addEventListener("submit", login_state_check);
-// login_state_check()
-// drawPage()
 
 function DrawBuyHTML(){
     getSeverAPI("buy")

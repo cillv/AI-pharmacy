@@ -23,6 +23,8 @@ const m_number_input = document.getElementById("m_number")
 
 let check_MB_S = false
 
+
+//즐겨찾기
 function check_MB(){
     // 즐겨찾기 비활성일 경우
     if (check_MB_S == false){
@@ -34,6 +36,7 @@ function check_MB(){
     console.log(check_MB_S)
 }
 
+//장바구니
 function putINB(){
     const m_number = document.getElementById("m_number").value
 
