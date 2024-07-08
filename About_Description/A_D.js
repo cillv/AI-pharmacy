@@ -1,10 +1,8 @@
-/* 들어갈 약 정보
-serial_number, name, company, main_ingredient, efficacy, usage,
-need_to_know, cautions, beware_food, side_effect, how_to_store, price 
-기능
+/* 들어갈 기능
     장바구니 저장
     즐겨찾기 저장
 */
+
 const m_name = document.getElementById("m_name")
 const m_company = document.getElementById("m_company")
 const m_price = document.getElementById("m_price")
@@ -23,12 +21,7 @@ const m_beware_food = document.getElementById("m_beware_food")
 
 const m_number_input = document.getElementById("m_number")
 
-
 let check_MB_S = false
-
-function endB(){
-    document.body.classList.add("hidden")
-}
 
 function check_MB(){
     // 즐겨찾기 비활성일 경우
@@ -66,6 +59,12 @@ async function getSeverAPI(id, type){
             "Content-Type": "application/json",
         }
         });
+
+        const data = await res.json();
+
+        drawA_D(data)
+
+        return data;
       }
       else if(type == "post"){
         url += ``
@@ -77,13 +76,6 @@ async function getSeverAPI(id, type){
             }
             });
       }
-  
-      const data = await res.json();
-      
-      if(type=="get"){
-        drawA_D(data)
-        }
-      
 
       return data;
     } catch (error) {
@@ -98,7 +90,7 @@ function drawA_D(data){
     m_price.innerHTML = `가격 : ${data.price}`
     m_serial_number.innerHTML = `serial_number : ${data.serial_number}`
 
-    m_main_ingreient.innerHTML = `${data.main_ingreient}`
+    m_main_ingreient.innerHTML = `${data.main_ingredient}`
     m_efficacy.innerHTML = `${data.efficacy}`
     m_side_effect.innerHTML = `${data.side_effect}`
 
@@ -110,26 +102,6 @@ function drawA_D(data){
     m_beware_food.innerHTML = `${data.beware_food}`
 }
 
+var A_D_NEED_ID = localStorage.getItem("A_D_NEED_ID")
+console.log(A_D_NEED_ID)
 getSeverAPI(A_D_NEED_ID, "get")
-
-/*
-var m_data = {
-    name : '힘들다',
-    company : "약 제조사",
-    price : "5000",
-    serial_number: "연결 어카지",
-
-    main_ingreient: "생강",
-    efficacy: "으쌰으쌰",
-    side_effect: "내일 피곤함",
-
-    usage: "주문을 외워",
-    how_to_store: "없음",
-
-    cautions: "내일 움직이기 힘들 듯",
-    need_to_know: "배아파",
-    beware_food: "당근"
-}
-
-drawA_D(m_data)
-*/

@@ -9,22 +9,6 @@ const canceB = document.querySelector("#canceB");
 
 let PAGENUMBER = 1;
 
-function addmenu(){
-  //const body = document.body
-  const menu = document.getElementById("menu")
-  const url = '../menu/menu.html'
-
-  const newDiv = document.createElement('iframe')
-  //body.appendChild(newDiv)
-  newDiv.src = url
-  newDiv.style.width = "100%"
-  newDiv.style.height = "auto"
-
-  menu.appendChild(newDiv); 
-}
-
-addmenu()
-
 async function getSeverAPI(PAGENUMBER, m_name, id, F_type){
   try {
     url = `${BASE_URL}api/v1/medicines/`
@@ -61,9 +45,6 @@ async function getSeverAPI(PAGENUMBER, m_name, id, F_type){
       }
     }else if (F_type=="getinfo"){
       draw_search_list(data.id, data.name, data.price, data.company)}
-    // }else if (F_type=="detail"){
-    //   detail_info_get(data)
-    // }
 
     return data;
   } catch (error) {
@@ -186,28 +167,19 @@ function clickCheck(){
 }
     
 function clickBox(id){
-  //getSeverAPI(null, null, id, "detail")
-  A_D_NEED_ID = id
-  detail_info_get()
-}
+  localStorage.setItem("A_D_NEED_ID", `${id}`);
+  console.log(A_D_NEED_ID)
 
-function detail_info_get(){
-  console.log(data)
-/* serial_number, name, company, main_ingredient, efficacy, usage, need_to_know, cautions, beware_food, side_effect, how_to_store, price */
-  MLB.innerHTML=""
+  const openPopup = () => {
+    // 팝업을 띄울 페이지 URL
+    var popupURL = "../About_Description/A_D.html";
+    // 팝업 창의 속성
+    var option = "width=600,height=400,scrollbars=yes";
+    // 팝업 열기
+    window.open(popupURL, "Popup", option);
+  }
 
-  const InfoDiv = document.createElement('div')
-  MLB.appendChild(InfoDiv)
-
-  const InfoIframe = document.createElement('iframe')
-  InfoDiv.appendChild(InfoIframe)
-
-  InfoIframe.src = "../About_Description/A_D.html"
-  InfoIframe.style.border = "none"
-
-  nextB.classList.add("hidden")
-  backB.classList.add("hidden")
-  canceB.classList.remove("hidden")
+  openPopup()
 }
 
 //초기 세팅

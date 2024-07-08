@@ -1,15 +1,11 @@
 * { 
-    margin: 0;
+    margin: 0.5%;
     padding: 0;
     box-sizing: border-box;
 }
 
 h1 {
     text-align: center;
-}
-
-div{
-    margin: 1%;
 }
 
 .jjj{

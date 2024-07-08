@@ -7,13 +7,9 @@
     <title>약 정보</title>
   </head>
   <body style="background-color: white;">
-    <div class="menus" id="menu"></div>
-    <!--<div class="ai-pharmacy" onclick="location.href='../main/main.html'">AI_Pharmacy</div>
-    <div class="top-lines"></div>
-    <div class="nav-buttons">
-      <button onclick="location.href='../log in/log.html'">로그인</button>
-      <button onclick="location.href='../Mypage/Mypage.html'">마이페이지</button>
-    </div>-->
+    <div class="menus" id="menu">
+      <iframe src="../menu/menu.html" class="menuf"> </iframe>
+    </div>
     <h1 class="pagetitle">약 검색하기</h1>
     <form id="reach_Inform" class="such_In">
       <input
@@ -29,7 +25,6 @@
       <div class="BLM">
         <button id="backB" onclick="Back_Button()">이전</button>
         <button id="nextB" onclick="Next_Button()">다음</button>
-        <button id="canceB" onclick="cancesearch()" class="hidden">완료</button>
       </div>
     </div>
     <script src="../url.js"></script>

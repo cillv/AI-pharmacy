@@ -4,30 +4,25 @@ const Benner = document.querySelector("#benner")
 
 const username_html = document.getElementById("username_h3");
 
-const loginB = document.getElementById("loginB");
-const logoutB = document.getElementById("logoutB");
-
 const contentBox = document.getElementById("contentM");
 
-let login_state = false;
+// // access 토큰 만료되면 쓸거
+// let token = localStorage.getItem("refresh")
 
-// access 토큰 만료되면 쓸거
-let token = localStorage.getItem("refresh")
-
-//진단 내역 받아올때 쓸 토큰
-let access = localStorage.getItem("access")
+// //진단 내역 받아올때 쓸 토큰
+// let access = localStorage.getItem("access")
 
 
-function login_state_check(){
-    if (token == null && access == null){
-        login_state = false;
-        console.log("not login")
-    }
-    else{
-        login_state = true;
-        console.log("yes login")
-    }
-}
+// function login_state_check(){
+//     if (token == null && access == null){
+//         login_state = false;
+//         console.log("not login")
+//     }
+//     else{
+//         login_state = true;
+//         console.log("yes login")
+//     }
+// }
 
 function drawPage(){
     if (login_state == false){                  //로그인이 안됐을 때
@@ -38,8 +33,8 @@ function drawPage(){
         console.log("draw my page")               //로그인이 됐을 때
         NotLogIn.classList.add("hidden")
         YesLogIn.classList.remove("hidden")
-        loginB.classList.add("hidden")
-        logoutB.classList.remove("hidden")
+        // loginB.classList.add("hidden")
+        // logoutB.classList.remove("hidden")
         Benner.classList.remove("hidden")
         // username 받아오기
         let userName = localStorage.getItem("name")
@@ -95,19 +90,19 @@ async function getSeverAPI(type){
     }
   }
 
-function GOlogout(){
-    logoutB.classList.add("hidden")
-    loginB.classList.remove("hidden")
-    login_state = false
-    drawPage()
-}
+// function GOlogout(){
+//     logoutB.classList.add("hidden")
+//     loginB.classList.remove("hidden")
+//     login_state = false
+//     drawPage()
+// }
 
 
 
-logoutB.addEventListener('click', GOlogout);
-window.addEventListener("submit", login_state_check);
-login_state_check()
-drawPage()
+// logoutB.addEventListener('click', GOlogout);
+// window.addEventListener("submit", login_state_check);
+// login_state_check()
+// drawPage()
 
 function DrawBuyHTML(){
     getSeverAPI("buy")
