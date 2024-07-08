@@ -5,7 +5,6 @@ const MLB = document.querySelector("#M_list");
 
 const backB = document.querySelector("#backB");
 const nextB = document.querySelector("#nextB");
-const canceB = document.querySelector("#canceB");
 
 let PAGENUMBER = 1;
 
@@ -94,17 +93,6 @@ function draw_search_list(id, name, price, company){
 
   nextB.classList.add("hidden")
   backB.classList.add("hidden")
-  canceB.classList.remove("hidden")
-}
-
-//완료 버튼
-function cancesearch(){
-  nextB.classList.remove("hidden")
-  backB.classList.remove("hidden")
-  canceB.classList.add("hidden")
-
-  //MLB.innerHTML=""
-  //n_drawlist(PAGENUMBER)
 }
 
 // 약 목록 리스트
@@ -167,8 +155,7 @@ function clickCheck(){
 }
     
 function clickBox(id){
-  localStorage.setItem("A_D_NEED_ID", `${id}`);
-  console.log(A_D_NEED_ID)
+  A_D_NEED_ID = localStorage.setItem("A_D_NEED_ID", `${id}`);
 
   const openPopup = () => {
     // 팝업을 띄울 페이지 URL
