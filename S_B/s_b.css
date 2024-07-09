@@ -11,28 +11,6 @@
     margin: 0 auto;
 }
 
-.menu{
-    width: 100%;
-    height: 5%;
-}
-
-.menuf{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    border: none; /* iframe의 경계를 제거 */
-}
-
-
-/* 타이틀 바 구현 */
-.title{
-    width: 100%;
-    height: 15%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    text-align: center;
-}
-
 /* 로그인이 되지 않았을 때 */
 .notlogin{
     border: 1px solid black;
@@ -48,64 +26,12 @@
 }
 
 /* 로그인이 되었을 때 */
-/* 베너 */
-.bennerS{
-    margin-bottom: 1%;
-    width: 100%;
-    height: 40%;
-    text-align: center;
-}
-
-.bennerS > img{
-    text-align: center;
-    padding-top: 5%;
-    padding-left: 2%;
-    width: 10%;
-    height: 10%;
-}
-
-.UseIS{
-    text-align: center;
-    padding-left: 2%;
-    width: 100%;
-    height: 10%;
-    text-align: center;
-}
-
 .detail_h{
     display: flex;
     height: 750px;
 }
 
 /* 데이터 표시 박스 */
-.buttonList{
-    padding-top: 1%;
-    padding-bottom: 1%;
-    padding-left: 2%;
-    padding-right: 2%;
-    width: 20%;
-    height: auto;
-}
-
-.buttonList > button{
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    margin-bottom: 10%;
-    width: 100%;
-    text-align: center;
-}
-
-.bax{
-    width: 90%;
-    height: 90%;
-    margin-left: 1%;
-    margin-right: 2%;
-    border:solid black;
-    text-align: center;
-    overflow: scroll;
-}
 
 .buyDiv{
     display:inline-block;

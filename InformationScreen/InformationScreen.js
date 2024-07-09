@@ -1,45 +1,30 @@
 const reach_InForm = document.querySelector("#reach_Inform");
 const reach_InForm_Name = document.querySelector("#reach_Inform input");
-const parent = document.querySelector("#reach_img");
-const parent3 = document.querySelector("#reach_value");
 const parent4 = document.querySelector("#list_M");
-const MLB_1 = document.querySelector("#oneline");
-const MLB_2 = document.querySelector("#twoline");
+const MLB = document.querySelector("#M_list");
+
+const backB = document.querySelector("#backB");
+const nextB = document.querySelector("#nextB");
 
 let PAGENUMBER = 1;
 
-
-
-console.log(BASE_URL)
-console.log(typeof(BASE_URL))
-
-
-//약 검색 뻘짓한거
-/*function getInfo(search_m_name){
-  const m_name = search_m_name;
-  for(let i=1; i>465; i++){
-    let PAGENUMBER = i;
-    getSeverAPI(PAGENUMBER, m_name)
-    console.log("Get() : "+s_state)
-    PAGENUMBER += 1;
-    console.log(PAGENUMBER);
-    console.log(s_state);
-    if (s_state == true){break;}
-    else if (PAGENUMBER>465){
-        alert("일치하는 약이 존재하지 않습니다.");
-        break;}
-  }
-  getSeverAPI(PAGENUMBER, m_name);
-  alert("검색 완료")
-}*/
-
-async function getSeverAPI(PAGENUMBER, m_name, F_type){
-  let pgnum = PAGENUMBER;
-  let Mname = m_name;
-  //const BASE_URL = "http://192.168.0.44:8000/";
-  //reset_reach();
+async function getSeverAPI(PAGENUMBER, m_name, id, F_type){
   try {
-    const res = await fetch(BASE_URL + `api/v1/medicines/?page=${String(pgnum)}&search=${Mname}`, {
+    url = `${BASE_URL}api/v1/medicines/`
+
+    if (PAGENUMBER != null){
+      url+=`?page=${PAGENUMBER}`;
+    }
+
+    if (m_name != null){
+      url+=`?search=${m_name}`;
+    }
+
+    if(id != null){
+      url+=`${id}`;
+    }
+
+    const res = await fetch(url, {
       mode: "cors", 
       method: "Get",
       headers: {
@@ -48,27 +33,18 @@ async function getSeverAPI(PAGENUMBER, m_name, F_type){
     });
 
     const data = await res.json();
-    //console.log(data);
-
-    //약 검색 뻘짓2
-    /* const userInput = m_name;
-    // var selectedItem;
-    
-    // for (let i = 0; i < 10; i++){
-    //   if(data[i].name == userInput){selectedItem = data[i]};
-    //   };
-      
-    // if (selectedItem) {
-    //   window.localStorage.getItem("S_state","true");
-    //   displayReachEnd(selectedItem);    } */
 
     if (F_type=="list"){
       for(var i=0; i<10; i++){
-        makeBox(i, data[i].name);
-        //getMedicinesInfo(data[i].id);
+        makeBox(data[i].id, data[i].name, data[i].price);
       }
-    }
-    
+    }else if (F_type=="search"){
+      for(var i=0; i<data.length; i++){
+        addInformation(data[i].id)
+      }
+    }else if (F_type=="getinfo"){
+      draw_search_list(data.id, data.name, data.price, data.company)}
+
     return data;
   } catch (error) {
     console.error("네트워크 요청 실패:", error);
@@ -76,113 +52,124 @@ async function getSeverAPI(PAGENUMBER, m_name, F_type){
   }
 }
 
-async function getMedicinesInfo(m_id){
-  let id = m_id
-  const BASE_URL = "http://192.168.0.204:8000/";
-  try {
-    const res = await fetch(BASE_URL + `api/v1/medicines/${String(m_id)}`, {
-      mode: "cors", 
-      method: "Get",
-      headers: {
-        "Content-Type": "application/json",
-      }
-    });
+  
+// 검색 기능
 
-    const data = await res.json();
-    console.log("getMI : "+ data.name);
-    
-    return data;
-  } catch (error) {
-    console.error("네트워크 요청 실패:", error);
-    alert("검색 중 오류가 발생했습니다. 나중에 다시 시도해주세요.");
-  }
-}
-
-//약검색 뻘짓3
-/*function reset_reach(){
-  parent3.innerHTML = '';
-  parent.style.display ='none';
-}; 
-
-function displayReachEnd(selectedItem) {
-  const imageUrl = selectedItem.itemImage
-  const imgElement = document.createElement("img");
-  
-  parent.style.display = ''
-  
-  imgElement.src = imageUrl;
-  imgElement.style.width = "1000px";
-  imgElement.style.height = "500px";
-    
-  parent.append(imgElement);
-
-  displayText(selectedItem)
-}
-  
-function displayText(selectedItem) {
-  // 약정보 요소 추가
-  const parent3 = document.querySelector("#reach_value");
-
-  //새로 검색시 한 번 초기화
-  parent3.innerHTML = ''
-  
-  parent3.innerText += "약 이름 : " + selectedItem.name + "\n";
-  parent3.innerText += "제약사 : " + selectedItem.company + "\n"
-  parent3.innerText += "가격 : " + selectedItem.price + "\n"
-}*/
-  
-  
-// API로부터 데이터를 가져온 후 호출됩니다.  
+//input 받기
 function reach_name(event){
   event.preventDefault();
   const search_m_name = reach_InForm_Name.value;
-  //getJSONfromAPI(search_m_name);
-  getInfo(search_m_name);
+  
+  MLB.innerHTML = ""
+  getSeverAPI(null, search_m_name, null, "search")
 }
 
-//reach_InForm.addEventListener("submit", reach_name);
+//정보 표기
+function addInformation(id){
+  getSeverAPI(null, null, id, "getinfo")
+}
 
+//리스트 그리기
+function draw_search_list(id, name, price, company){
+  const newDiv1 = document.createElement('div')
+  const MName = document.createElement('h5')
+  const MCompany = document.createElement('h5')
+  const MPrice = document.createElement('h5')
+
+  MLB.appendChild(newDiv1)
+  newDiv1.appendChild(MName)
+  newDiv1.appendChild(MCompany)
+  newDiv1.appendChild(MPrice)
+  newDiv1.id = id
+
+  MName.innerHTML = `${name}`
+  MPrice.innerHTML = `${price} 원`
+  MCompany.innerHTML = `${company}`
+
+  newDiv1.classList.add("parentStyle")
+  MName.classList.add("parentText")
+  MPrice.classList.add("parentText")
+  MCompany.classList.add("parentText")
+
+  nextB.classList.add("hidden")
+  backB.classList.add("hidden")
+}
 
 // 약 목록 리스트
+
+//버튼
 function Back_Button(){
   if (PAGENUMBER == 1){PAGENUMBER = 1;}
-  else {PAGENUMBER -= 1;}
+  else {PAGENUMBER -= 2;}
   
   n_drawlist(PAGENUMBER);
 }
-
 function Next_Button(){
+  MLB.innerHTML= ""
+
   if (PAGENUMBER == 467){PAGENUMBER = 466;}
-  else {PAGENUMBER += 1;}
+  else {PAGENUMBER += 2;}
 
   n_drawlist(PAGENUMBER);
 }
 
+// 페이지 수 이동
 function n_drawlist(PAGENUMBER){
-  let data = getSeverAPI(PAGENUMBER, "", "list");
-  console.log(data);
+  for (let i = 0; i < 2; i++){
+    getSeverAPI(PAGENUMBER+i, null, null, "list");
+  }
 }
 
-function makeBox(i, name){
+//상자 그리기
+function makeBox(Id, name, price){
+  const newDiv1 = document.createElement('div')
+  const newMName = document.createElement('h5')
+  const newMPrice = document.createElement('h5')
+
+  MLB.appendChild(newDiv1);
+  newDiv1.appendChild(newMName)
+  newDiv1.appendChild(newMPrice)
+
+  newDiv1.id = Id
+
+  newDiv1.classList.add("ListBa");
+  newMName.innerHTML = `${name}`
+  newMPrice.innerHTML = `${price}원`
+  newMName.id = Id;
+
+  newMName.classList.add("Listtext")
+  newMPrice.classList.add("Listtexth6")
+} 
+
+//상세 설명
+
+//체크된 상자 표시
+function clickCheck(){
+  const boxs = document.querySelectorAll(".LM > div");
   
-  //if(0<=i<4){
-    const newDiv1 = document.createElement('div');
-    MLB_1.appendChild(newDiv1);
-    newDiv1.id = i+1;
-    newDiv1.innerHTML = `${name}`
-//  }
-  // if(5<=i<10){
-  //   const newDiv2 = document.createElement('div');
-  //   MLB_2.appendChild(newDiv2);
-  //   newDiv2.id = i+1;
-  //   newDiv2.innerHTML = `${name}`
-  // }
+  boxs.forEach((el, index) => {
+    el.onclick = () => {
+      clickBox(el.id);
+    }
+  }); 
+}
+    
+function clickBox(id){
+  A_D_NEED_ID = localStorage.setItem("A_D_NEED_ID", `${id}`);
+
+  const openPopup = () => {
+    // 팝업을 띄울 페이지 URL
+    var popupURL = "../About_Description/A_D.html";
+    // 팝업 창의 속성
+    var option = "width=600,height=400,scrollbars=yes";
+    // 팝업 열기
+    window.open(popupURL, "Popup", option);
+  }
+
+  openPopup()
 }
 
-
-/*  나중에 약 자세한 정보 표시
-function addInformation(name, company, main_ingredient, efficacy, usage, need_to_know, cautions){
-
-}*/
-
+//초기 세팅
 n_drawlist(1);
+MLB.addEventListener('click', clickCheck);
+reach_InForm.addEventListener('submit', reach_name);

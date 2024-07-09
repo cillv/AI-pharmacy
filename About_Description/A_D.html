@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head profile="http://192.168.0.90:8000/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="A_D.css" />
+    <title>Document</title>
+</head>
+<body style="background-color: white;">
+    <h1 id="m_name"> name </h1>
+    <div class="onediv">
+        <div style="background-color: white;">
+            <h3 id="m_company">제조사 : company </h3>
+            <h3 id="m_price">가격 : price </h3>
+            <h4 id="m_serial_number">serial_number : serial_number</h4>
+        </div>
+    </div>
+    <div class="group">
+        <div>
+            <h3>주요 성분</h3>
+            <h4 id="m_main_ingreient">main_ingredient</h4>
+        </div>
+        <div>
+            <h3>효능</h3>
+            <h4 id="m_efficacy">efficacy</h4>
+        </div>
+        <div>
+            <h3>부작용</h3>
+            <h4 id="m_side_effect">side_effect</h4>
+        </div>
+    </div>
+    <div class="group">
+        <div><h3>사용법</h3><h4 id="m_usage">usage</h4></div>
+        <div><h3>저장 방법</h3><h4 id="m_how_to_store">how_to_store</h4></div>
+    </div>
+    <div class="group">
+        <div><h3>주의사항</h3><h4 id="m_cautions">cautions</h4></div>
+        <div><h3>숙지사항</h3><h4 id="m_need_to_know">need_to_know</h4></div>
+        <div><h3>조심해야하는 음식</h3><h4 id="m_beware_food">beware_food</h4></div>
+    </div>
+    <div id="needLogIN" class="onediv">
+        <div>
+            <input id="m_number" placeholder="수량을 입력해주세요." required/>
+            <button onclick="putINB()">장바구니 담기</button>   
+        </div>  
+    </div>
+    <script src="../url.js"></script>
+    <script src="A_D.js"></script>
+</body>
+</html>

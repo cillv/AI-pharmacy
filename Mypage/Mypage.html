@@ -1,46 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head profile="http://192.168.0.44:8000/">
+<head profile="http://192.168.0.90:8000/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Mypage.css" />
     <title>My page</title>
 </head>
 <body class="body">
-  <div class="ai-pharmacy">AI-Pharmacy</div>
-  <div class="nav-buttons">
-    <button onclick="location.href='../../log in/log.html'" id="loginB">로그인</button>
-    <button class="hidden"  id="logoutB">로그아웃</button>
-    <button onclick="location.href='../../SignUp/SignUpLaw/SignUPLaw.html'">
-      회원가입
-    </button>
-    <button onclick="location.href='../../Mypage/Mypage.html'">
-      마이페이지
-    </button>
+  <div class="menu">
+    <iframe src="../menu/menu.html" class="menuf"></iframe>
   </div>
-  <div class="top-lines"></div>
     <h1 class='title'>My page</h1> 
     <div id="benner" class="bennerS">
-      <img src="../Mypage/profile_img.png" alt="이미지불러오기 실패" class="UseIS" id="user_img"/>
-      <h3 class="UseIS">User Name</h3>
+      <!-- <img src="../Mypage/profile_img.png" alt="이미지불러오기 실패" class="UseIS" id="user_img"/> -->
+      <h3 id="username_h3" class="UseIS">User Name</h3>
     </div>
     <div id="notlogin" class="notlogin">
-        <h2>본 페이지는 로그인하셔야 이용 가능한 페이지입니다.</h2>
-        <button onclick="location.href='../log in/log.html'">로그인 하러 가기</button>
+      <h2>본 페이지는 로그인하셔야 이용 가능한 페이지입니다.</h2>
     </div>
     <div id="yeslogin" class="detail_h hidden">
       <div id="mypageFL" class="buttonList">
-        <button>구매 내역 확인하기</button>
-        <button>구매 일 확인하기</button>
-        <button>진단 내역 확인하기</button>
+        <button onclick="DrawBuyHTML()">구매 내역</button>
+        <button onclick="DrawDoctorHTML()">진단 내역</button>
+        <button onclick="DrawJangHTML()">장바구니</button>
       </div>
-      <div id="contentM" class="bax">
-        <div id="check_date">
-          <h5 style="text-align: center;">년도</h5>
-          <h5 style="text-align: center;">월</h5>
-        </div>
-      </div>
+      <div id="contentM" class="bax">      </div>
     </div>
-<script src="Mypage.js"></script>
+    <script src="../url.js"></script>
+  <script src="Mypage.js"></script>
 </body>
 </html>
