@@ -12,7 +12,6 @@ function login_state_check(){
         NotLogIn.classList.remove("hidden")
     }
     else{
-        console.log("draw my page")               //로그인이 됐을 때
         NotLogIn.classList.add("hidden")
         YesLogIn.classList.remove("hidden")
     }
@@ -29,7 +28,6 @@ async function getSeverAPI(type, id){
             url += `api/v1/inventories/${id}/`
         }
 
-        console.log(url)
         if(type == "DELETE"){
             const res = await fetch(url, {
                 mode: "cors", 
@@ -54,7 +52,6 @@ async function getSeverAPI(type, id){
             });
 
             const data = await res.json();
-            console.log("API: ", data)
     
             contentBox.innerHTML = ""
             const infobar = document.createElement('div')
@@ -95,7 +92,6 @@ function DrawJangHTML(){
 }
 
 function sendJang(id){
-    console.log("id: ",id)
     getSeverAPI("DELETE", id)
 }
 
@@ -111,14 +107,11 @@ function oderJangH(data){
     }
     else{
         let id = data.id
-        console.log("oder id: ",id)
-
 
         let number = data.quantity
         let medicine = data.medicine
 
         let company = medicine.company
-        let m_id = medicine.id
         let m_name = medicine.name
         let m_price = medicine.price
 
