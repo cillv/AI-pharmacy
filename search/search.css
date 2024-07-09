@@ -146,4 +146,5 @@ input:focus {
   padding: 10px;
   border: 1px solid #ccc;
   background-color: #f9f9f9;
+  font-size: 13px;
 }
