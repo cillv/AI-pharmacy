@@ -36,8 +36,6 @@
 .buyDiv{
     display:inline-block;
     width: 99.5%;
-    /* height: auto;
-    flex-direction: column; */
     border: solid gray;
     justify-content: center;
     align-items: center;
