@@ -3,10 +3,7 @@ const YesLogIn = document.querySelector("#yeslogin");
 
 const contentBox = document.getElementById("contentM");
 
-// access 토큰 만료되면 쓸거
 let token = localStorage.getItem("refresh")
-
-//진단 내역 받아올때 쓸 토큰
 let access = localStorage.getItem("access")
 
 function login_state_check(){
