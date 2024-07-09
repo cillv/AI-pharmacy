@@ -98,6 +98,7 @@ function DrawJangHTML(){
 }
 
 function sendJang(id){
+    console.log("id: ",id)
     getSeverAPI("DELETE", id)
 }
 
@@ -113,6 +114,8 @@ function oderJangH(data){
     }
     else{
         let id = data.id
+        console.log("oder id: ",id)
+
 
         let number = data.quantity
         let medicine = data.medicine
