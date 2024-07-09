@@ -4,10 +4,7 @@ const UN = document.getElementById("UN");
 
 let userName = localStorage.getItem("name")
 
-// access 토큰 만료되면 쓸거
 let token = localStorage.getItem("refresh")
-
-//진단 내역 받아올때 쓸 토큰
 let access = localStorage.getItem("access")
 
 function login_state_check(){
@@ -48,11 +45,8 @@ function GOlogout(){
 
 function clickBox(){  
     const openPopup = () => {
-      // 팝업을 띄울 페이지 URL
       var popupURL = "../S_B/s_b.html";
-      // 팝업 창의 속성
       var option = "width=600,height=400,scrollbars=yes";
-      // 팝업 열기
       window.open(popupURL, "Popup", option);
     }
   
