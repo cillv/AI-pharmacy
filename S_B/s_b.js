@@ -96,9 +96,6 @@ function sendJang(id){
 }
 
 function oderJangH(data){
-    console.log("Jang: ", data)
-    console.log(data.medicine.company)
-
     const newDiv = document.createElement('div')
     contentBox.appendChild(newDiv)
 
