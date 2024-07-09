@@ -32,6 +32,15 @@
 }
 
 /* 데이터 표시 박스 */
+.bax{
+    width: 90%;
+    height: 90%;
+    margin-left: 1%;
+    margin-right: 2%;
+    border:solid black;
+    text-align: center;
+    overflow: scroll;
+}
 
 .buyDiv{
     display:inline-block;
