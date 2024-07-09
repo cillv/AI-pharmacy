@@ -128,6 +128,5 @@ function drawA_D(data){
 }
 
 var A_D_NEED_ID = localStorage.getItem("A_D_NEED_ID")
-console.log(A_D_NEED_ID)
 getSeverAPI(A_D_NEED_ID, "get", "load_info")
 login_state_check()
