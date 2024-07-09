@@ -3,8 +3,8 @@ html {
     height: 100%;
 }
 body {
-    min-width: 100%;
-    min-height: 100%;
+    /*min-width: 100%;
+    min-height: 100%;*/
     overflow: scroll;
 }
 
@@ -53,15 +53,14 @@ body {
 
 /* 검색값 */
 .parentStyle{
-    width: 100%;
+    width: 99.9%;
     height: 10%;
-    margin: 0.1%;
     border: 1px solid black;
     display: flex;
 }
 
 .parentText{
-    width: 30%;
+    width: 33.9%;
     height: 100%;
     margin: 0.1%;
     display: inline;
@@ -75,7 +74,9 @@ body {
 
 /* 약목록 */
 .BLM{
+    width: 100%;
     box-sizing: content-box;
+    text-align: center;
 }
 
 .BLM h1{
@@ -125,12 +126,6 @@ body {
     border: 1px solid black;
     width: 20%;
     height: 20%;
-}
-
-.BLM{
-    width: 98%;
-    height: 100%;
-    text-align: center;
 }
 
 /* 기능성 */
