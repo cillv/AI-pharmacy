@@ -6,6 +6,7 @@
 
 
 /* 타이틀 */
+
 .ai-pharmacy {
     position: absolute;
     font-family: "Playfair Display", serif;
@@ -14,18 +15,18 @@
     font-size: 24px;
     font-weight: bold;
     color: #333;
-    font-weight: 900; /* 굵기 조절 */
+    font-weight: 900;
 
     background-color: transparent;
     border: none;
     
     cursor: pointer;
-  }
+}
   
 
 .top-lines {
     width: 100%;
-    height: auto; /* 20px top margin + 2 * 2px line thickness + 20px between lines */
+    height: auto;
     position: absolute;
     top: 45px;
     display: flex;
@@ -73,6 +74,7 @@ background-color: gray;
 }
 
 /* 기능성 */
+
 .hidden{
     display: none;
 }
