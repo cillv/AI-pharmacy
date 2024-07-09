@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI-Pharmacy</title>
-    <link rel="stylesheet" href="log.css" />
+    <link rel="stylesheet" href="test.css" />
   </head>
   <body>
     <div class="container">
@@ -29,7 +29,12 @@
           <span></span>
         </div>
         <div class="button-group">
-          <button class="m-b m-b-login" onclick="loginstart" id="logioB">
+          <button
+            class="m-b m-b-login"
+            onclick="loginstart"
+            id="logioB"
+            onkeyup="loginstart();"
+          >
             Log In
           </button>
           <button
@@ -42,7 +47,7 @@
       </div>
     </div>
 
-    <script src="log.js"></script>
+    <script src="test.js"></script>
     <script src="../url.js"></script>
   </body>
 </html>
