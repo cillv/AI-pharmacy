@@ -50,7 +50,6 @@ function putINB(){
         alert("수량을 반드시 1개 이상 입력해주세요.")
     }
     else{
-        console.log(`장바구니에 ${m_number}개 담았습니다.`)
         getSeverAPI(A_D_NEED_ID, "post", "putInB")
     }
 }
@@ -95,6 +94,8 @@ async function getSeverAPI(id, type, how_use){
         })
         const data = await res.json();
 
+        alert(`장바구니에 ${data.medicine.name}을/를 ${data.quantity}개 담았습니다.`)
+
         console.log(data)
 
         return data;
@@ -108,7 +109,8 @@ async function getSeverAPI(id, type, how_use){
 }
 
 function drawA_D(data){
-    m_name.innerHTML = `${data.name}`
+    let dataname = data.name
+    m_name.innerHTML = `${dataname}`
     m_company.innerHTML = `제조사 : ${data.company}`
     m_price.innerHTML = `가격 : ${data.price}`
     m_serial_number.innerHTML = `serial_number : ${data.serial_number}`
