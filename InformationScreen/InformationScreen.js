@@ -39,10 +39,32 @@ async function getSeverAPI(PAGENUMBER, m_name, id, F_type){
         makeBox(data[i].id, data[i].name, data[i].price);
       }
     }else if (F_type=="search"){
+      const newDiv1 = document.createElement('div')
+
+      const MName = document.createElement('h5')
+      const MCompany = document.createElement('h5')
+      const MPrice = document.createElement('h5')
+
+      MLB.appendChild(newDiv1)
+      newDiv1.appendChild(MName)
+      newDiv1.appendChild(MCompany)
+      newDiv1.appendChild(MPrice)
+
+      MName.innerHTML = `이름`
+      MPrice.innerHTML = `가격`
+      MCompany.innerHTML = `제조사`
+
+      newDiv1.classList.add("parentStyle")
+      MName.classList.add("parentText")
+      MPrice.classList.add("parentText")
+      MCompany.classList.add("parentText")
+      newDiv1.style.backgroundColor = "gainsboro"
+
       for(var i=0; i<data.length; i++){
         addInformation(data[i].id)
       }
     }else if (F_type=="getinfo"){
+
       draw_search_list(data.id, data.name, data.price, data.company)}
 
     return data;
