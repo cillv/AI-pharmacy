@@ -48,6 +48,7 @@ body {
     padding-bottom: 6.5px;
     padding-right: 6.5px;
     padding-left: 6.5px;
+    cursor: pointer;
 }
 
 /* 검색값 */
@@ -100,6 +101,7 @@ body {
     width: 18%;
     height: 145px;
     border: 1px solid black;
+    cursor: pointer;
 }
 
 .Listtext{
