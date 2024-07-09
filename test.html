@@ -1,28 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-        iframe {
-            border: none; /* iframe의 경계를 제거 */
-        }
-    </style>
-</head>
-<body id="test">
-    <div id='menu'></div>
-    <script>
-        const body = document.body
-        const url = 'menu/menu.html'
-
-        const newDiv = document.createElement('iframe')
-        body.appendChild(newDiv)
-        newDiv.src = url
-        newDiv.style.width = "100%"
-        newDiv.style.height = "auto"
-
-        body.appendChild(newDiv); 
-    </script>
-</body>
+    <link rel="stylesheet" href="test.css" />
+  </head>
+  <body>
+    <script src="log.js"></script>
+  </body>
 </html>
