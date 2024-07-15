@@ -17,7 +17,7 @@ function login_state_check(){
     }
 }
 
-async function getSeverAPI(type, id){
+async function getSeverAPI(type, id, M_quantity){
     try {
         url = `${BASE_URL}`
 
@@ -40,6 +40,38 @@ async function getSeverAPI(type, id){
 
             DrawJangHTML()
 
+        }
+        else if(type == "PutP" || type == "PutM"){
+            if (type == "PutP"){
+                const res = await fetch(url, {
+                    mode: "cors", 
+                    method: "PUT",
+                    headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${access}`
+                    },
+                    body: JSON.stringify({
+                        quantity :`${M_quantity+1}`,
+                    }),
+                });
+    
+                DrawJangHTML()
+            }
+            else{
+                const res = await fetch(url, {
+                    mode: "cors", 
+                    method: "PUT",
+                    headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${access}`
+                    },
+                    body: JSON.stringify({
+                        quantity :`${M_quantity-1}`,
+                    }),
+                });
+    
+                DrawJangHTML()
+            }
         }
         else{
             const res = await fetch(url, {
@@ -95,51 +127,72 @@ function sendJang(id){
     getSeverAPI("DELETE", id)
 }
 
+function P_Quantity(id, M_quantity){
+    getSeverAPI("PutP", id, M_quantity)
+}
+
+function M_Quantity(id, M_quantity){
+    getSeverAPI("PutM", id, M_quantity)
+}
+
 function oderJangH(data){
     const newDiv = document.createElement('div')
     contentBox.appendChild(newDiv)
 
-    if (data == undefined){
-        console.log("data null!")
-    }
-    else{
-        let id = data.id
+    let id = data.id
 
-        let number = data.quantity
-        let medicine = data.medicine
+    let number = data.quantity
+    const fom = document.createElement('div')
+    const numDiv = document.createElement('div')
+    const PB = document.createElement('button')
+    const MB = document.createElement('button')
+    
+    PB.innerHTML = "▲"
+    PB.onclick = function() { P_Quantity(id, number) };
 
-        let company = medicine.company
-        let m_name = medicine.name
-        let m_price = medicine.price
+    MB.innerHTML = "▼"
+    MB.onclick = function() { M_Quantity(id, number) };
 
-        const nametext = document.createElement('h5')
-        const companytext = document.createElement('h5')
-        const numberetext = document.createElement('h5')
-        const pricetext = document.createElement('h5')
-        const btn = document.createElement('button');
+    let medicine = data.medicine
 
-        newDiv.appendChild(nametext)
-        newDiv.appendChild(companytext)
-        newDiv.appendChild(numberetext)
-        newDiv.appendChild(pricetext)
-        newDiv.appendChild(btn)
+    let company = medicine.company
+    let m_name = medicine.name
+    let m_price = medicine.price
 
-        btn.innerHTML = "취소"
-        btn.onclick = function() { sendJang(id) };
+    const nametext = document.createElement('h5')
+    const companytext = document.createElement('h5')
+    const numberetext = document.createElement('h5')
+    const pricetext = document.createElement('h5')
+    const btn = document.createElement('button');
 
-        nametext.innerHTML = `${m_name}`
-        companytext.innerHTML = `${company}`
-        numberetext.innerHTML = `${number}개`
-        pricetext.innerHTML = `${m_price}원`
+    newDiv.appendChild(nametext)
+    newDiv.appendChild(companytext)
+    newDiv.appendChild(fom)
+    fom.appendChild(numberetext)
+    fom.appendChild(numDiv)
+    numDiv.appendChild(PB)
+    numDiv.appendChild(MB)
+    newDiv.appendChild(pricetext)
+    newDiv.appendChild(btn)
 
-        newDiv.classList.add("buyDiv")
-        nametext.classList.add("JDivText")
-        companytext.classList.add("JDivText")
-        numberetext.classList.add("JDivText")
-        pricetext.classList.add("JDivText")
-        btn.classList.add("JDivText")
-    }
+    btn.innerHTML = "취소"
+    btn.onclick = function() { sendJang(id) };
 
+    nametext.innerHTML = `${m_name}`
+    companytext.innerHTML = `${company}`
+    numberetext.innerHTML = `${number}`
+    pricetext.innerHTML = `${m_price}원`
+
+    newDiv.classList.add("buyDiv")
+    fom.classList.add("JDivText")
+    numDiv.classList.add("numDiv")
+    PB.classList.add("numB")
+    MB.classList.add("numB")
+    nametext.classList.add("JDivText")
+    companytext.classList.add("JDivText")
+    numberetext.classList.add("numText")
+    pricetext.classList.add("JDivText")
+    btn.classList.add("JDivText")
 }
 
 document.body.addEventListener("submit", login_state_check())

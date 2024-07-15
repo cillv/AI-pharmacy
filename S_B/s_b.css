@@ -28,27 +28,24 @@
 /* 로그인이 되었을 때 */
 .detail_h{
     display: flex;
-    height: 750px;
+    height: 700px;
 }
 
 /* 데이터 표시 박스 */
 .bax{
-    width: 90%;
-    height: 90%;
-    margin-left: 1%;
-    margin-right: 2%;
+    width: 98%;
+    height: 98%;
+    margin: 1%;
     border:solid black;
     text-align: center;
     overflow: scroll;
 }
 
 .buyDiv{
-    display:inline-block;
-    width: 99.5%;
-    border: solid gray;
-    justify-content: center;
-    align-items: center;
-    box-sizing: content-box;
+    display: inline-flex;
+    height: auto;
+    width: 100%;
+    border: 1px solid gray;
 }
 
 .buyDivText{
@@ -76,6 +73,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.numDiv{
+    height: 100%;
+    width: 20%;
+}
+
+.numText{
+    border: 1px solid black;
+    float: left;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.numB{
+    border: 1px solid black;
+    text-align: center;
+    width: 100%;
+    height: 45%;
 }
 
 /* 숨기기 기능*/
