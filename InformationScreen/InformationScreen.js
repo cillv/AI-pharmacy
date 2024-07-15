@@ -36,7 +36,7 @@ async function getSeverAPI(PAGENUMBER, m_name, id, F_type){
 
     if (F_type=="list"){
       for(var i=0; i<10; i++){
-        makeBox(data[i].id, data[i].name, data[i].price);
+        makeBox(data[i].id, data[i].name, data[i].price, data[i].remaining, data[i].img_url);
       }
     }else if (F_type=="search"){
       const newDiv1 = document.createElement('div')
@@ -143,24 +143,33 @@ function n_drawlist(PAGENUMBER){
 }
 
 //상자 그리기
-function makeBox(Id, name, price){
+function makeBox(Id, name, price, remaining, m_img_url){
   const newDiv1 = document.createElement('div')
   const newMName = document.createElement('h5')
   const newMPrice = document.createElement('h5')
+  const newMRemain = document.createElement('h5')
+  const newMImg = document.createElement('iframe')
 
   MLB.appendChild(newDiv1);
+  newDiv1.appendChild(newMImg)
   newDiv1.appendChild(newMName)
   newDiv1.appendChild(newMPrice)
+  newDiv1.appendChild(newMRemain)
+
+  newMImg.src = m_img_url
 
   newDiv1.id = Id
 
   newDiv1.classList.add("ListBa");
   newMName.innerHTML = `${name}`
   newMPrice.innerHTML = `${price}원`
+  newMRemain.innerHTML = `재고 : ${remaining}개`
   newMName.id = Id;
 
+  newMImg.classList.add("Listimg")
   newMName.classList.add("Listtext")
   newMPrice.classList.add("Listtexth6")
+  newMRemain.classList.add("Listtexth6")
 } 
 
 //상세 설명
