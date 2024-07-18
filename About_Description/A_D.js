@@ -12,6 +12,9 @@ let access = localStorage.getItem("access")
 const needLogIN = document.getElementById("needLogIN")
 
 const m_name = document.getElementById("m_name")
+const m_score = document.getElementById("m_score")
+
+const m_img = document.getElementById("m_img")
 const m_company = document.getElementById("m_company")
 const m_price = document.getElementById("m_price")
 const m_serial_number = document.getElementById("m_serial_number")
@@ -109,8 +112,10 @@ async function getSeverAPI(id, type, how_use){
 }
 
 function drawA_D(data){
-    let dataname = data.name
-    m_name.innerHTML = `${dataname}`
+    m_name.innerHTML = `${data.name}`
+    m_score.innerHTML = `평점 : ${data.average_rating}`
+
+    m_img.src = data.img_url
     m_company.innerHTML = `제조사 : ${data.company}`
     m_price.innerHTML = `가격 : ${data.price}`
     m_serial_number.innerHTML = `serial_number : ${data.serial_number}`
@@ -128,6 +133,5 @@ function drawA_D(data){
 }
 
 var A_D_NEED_ID = localStorage.getItem("A_D_NEED_ID")
-console.log(A_D_NEED_ID)
 getSeverAPI(A_D_NEED_ID, "get", "load_info")
 login_state_check()

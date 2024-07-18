@@ -45,6 +45,7 @@ async function loginSever(userID, userPW) {
           },
         });
         const data = await res.json();
+        console.log(data)
         localStorage.setItem("name", data["name"]);
         window.location.href = "../test/test.html";
       } catch (error) {

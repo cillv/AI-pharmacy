@@ -22,7 +22,6 @@ function login_state_check(){
         NotLogIn.classList.remove("hidden")
 
         Benner.classList.add("hidden")
-        UserImg.classList.add("hidden")
         username_html.classList.add("hidden")
     }
     else{
@@ -31,7 +30,6 @@ function login_state_check(){
         YesLogIn.classList.remove("hidden")
 
         Benner.classList.remove("hidden")
-        // UserImg.classList.remove("hidden")
         username_html.classList.remove("hidden")
         
         username_html.innerHTML = `${userName}님 어서오세요. `
