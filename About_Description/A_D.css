@@ -91,19 +91,57 @@ h1 {
 }
 
 .R_Div{
-    display: flex;
     float: left;
     width: 100%;
     height: 100%;
+
 }
 
-.R_Div h5{
+.RE_DIV_D{
+    margin: 0%;
     padding: 1%;
     width: 100%;
     height: 100%;
     text-align: center;
     border: solid black;
     background-color: gainsboro;
+}
+
+.R_U_Div{
+    padding: 1%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: 2px solid black;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0%;
+}
+
+.R_U_Div2{
+    padding: 1%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: 1px solid black;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0%;
+    overflow: hidden;
+}
+
+.R_U_text{
+    display: inline-block;
+    width: 10%;
+}
+
+.R_U_text2{
+    display: inline-block;
+    width: 55%;
 }
 
 /* 기능성 */
