@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>리뷰창</title>
+    <link rel="stylesheet" href="review.css" />
+  </head>
+  <body>
+    <h1>리뷰 작성</h1>
+    <form>
+      <label for="rating">별점:</label>
+
+      <input type="checkbox" id="star1" class="star-checkbox" value="1" />
+      <label for="star1" class="star-label">&#9733;</label>
+
+      <input type="checkbox" id="star2" class="star-checkbox" value="2" />
+      <label for="star2" class="star-label">&#9733;</label>
+
+      <input type="checkbox" id="star5" class="star-checkbox" value="5" />
+      <label for="star5" class="star-label">&#9733;</label>
+
+      <input type="checkbox" id="star4" class="star-checkbox" value="4" />
+      <label for="star4" class="star-label">&#9733;</label>
+
+      <input type="checkbox" id="star3" class="star-checkbox" value="3" />
+      <label for="star3" class="star-label">&#9733;</label>
+
+      <br /><br />
+
+      <label for="review">리뷰:</label>
+      <textarea
+        id="review"
+        name="review"
+        maxlength="200"
+        placeholder="200자 미만으로 작성하세요"
+      ></textarea
+      ><br /><br />
+      <input type="submit" value="제출" />
+    </form>
+    <script src="review.js"></script>
+    <script src="../url.js"></script>
+  </body>
+</html>
