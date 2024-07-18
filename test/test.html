@@ -1,25 +1,44 @@
 <!DOCTYPE html>
-<html lang="ko">
-  <head>
+<html lang="en">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>진단하기</title>
-    <link rel="stylesheet" href="test.css" />
+    <title>리뷰창</title>
+    <link href="test.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="chat-container">
-      <div class="messages" id="messages"></div>
-      <div class="input-container">
-        <input type="text" id="userInput" placeholder="메시지를 입력하세요" />
-        <button onclick="sendMessage()">전송</button>
+    <form class="mb-3" name="myform" id="myform" method="post">
+      <fieldset>
+        <span class="text-bold">별점을 선택해주세요</span>
+        <input type="radio" name="reviewStar" value="5" id="rate1" /><label
+          for="rate1"
+          >★</label
+        >
+        <input type="radio" name="reviewStar" value="4" id="rate2" /><label
+          for="rate2"
+          >★</label
+        >
+        <input type="radio" name="reviewStar" value="3" id="rate3" /><label
+          for="rate3"
+          >★</label
+        >
+        <input type="radio" name="reviewStar" value="2" id="rate4" /><label
+          for="rate4"
+          >★</label
+        >
+        <input type="radio" name="reviewStar" value="1" id="rate5" /><label
+          for="rate5"
+          >★</label
+        >
+      </fieldset>
+      <div>
+        <textarea
+          class="col-auto form-control"
+          type="text"
+          id="reviewContents"
+          placeholder="200자 이내로 작성해주세요"
+          maxlength="200"
+        ></textarea>
       </div>
-    </div>
-    <script src="test.js"></script>
-    <script src="../url.js"></script>
-    <script>
-      window.onload = function () {
-        getHistory();
-      };
-    </script>
+    </form>
   </body>
 </html>

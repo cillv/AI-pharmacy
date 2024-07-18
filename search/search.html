@@ -1,44 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI_Pharmacy</title>
+    <title>진단하기</title>
     <link rel="stylesheet" href="search.css" />
   </head>
   <body>
-    <div class="top-lines"></div>
-    <div class="nav-buttons">
-      <button
-        onclick="location.href='../../log in/log.html'"
-        id="usernameDisplay"
-      ></button>
-      <button onclick="location.href='../../SignUp/SignUpLaw/SignUPLaw.html'">
-        회원가입
-      </button>
-      <button onclick="location.href='../../Mypage/Mypage.html'">
-        마이페이지
-      </button>
-    </div>
-    <div class="ai-pharmacy" onclick="location.href='../../main/main.html'">
-      AI_Pharmacy
-    </div>
-    <div class="input_container">
-      <div>
-        <input type="text" id="inputField" placeholder="증상을 입력하세요." />
+    <div class="chat-container">
+      <div class="messages" id="messages"></div>
+      <div class="input-container">
+        <input type="text" id="userInput" placeholder="메시지를 입력하세요" />
+        <button onclick="sendMessage()">전송</button>
       </div>
-      <br />
     </div>
-    <button class="custom-btn btn-1" id="searchA">입력</button>
-
-    <img
-      src="../assets/robot.png"
-      class="robot-image"
-      alt="로봇 이미지"
-    ></img>
-    <div class="print" id="pharmacyDisplay">병명 및 증상</div>
-    <div id="resultDisplay" class="centered-result"></div>
     <script src="search.js"></script>
     <script src="../url.js"></script>
+    <script>
+      window.onload = function () {
+        getHistory();
+      };
+    </script>
   </body>
 </html>
