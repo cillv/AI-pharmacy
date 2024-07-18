@@ -155,7 +155,6 @@ async function getSeverAPI(type, id){
                 for(let i=0; i<data.length; i++){oderJangH(data[i])}
             }
             else if (type == "GETSend"){
-                console.log(data)
                 contentBox.innerHTML = ""
 
                 const newDiv = document.createElement('div')
@@ -178,10 +177,30 @@ async function getSeverAPI(type, id){
 
                 newDiv.classList.add("buyDiv")
                 MDiv.classList.add("buyDiv")
+                M_S.style.width = "98%"
+                M_S.style.margin = "1%"
                 buy_datetext.classList.add("B_A_DivText")
                 numberetext.classList.add("B_A_DivText")
+            
+                const nametext = document.createElement('h5')
+                const pricetext = document.createElement('h5')
+                const number_text = document.createElement('h5')
+            
+                MDiv.appendChild(nametext)
+                MDiv.appendChild(pricetext)
+                MDiv.appendChild(number_text)
+            
+                nametext.innerHTML = `제품명`
+                number_text.innerHTML = `수량`
+                pricetext.innerHTML = `가격`
+            
+                nametext.classList.add("BDivText")
+                number_text.classList.add("BDivText")
+                pricetext.classList.add("BDivText")
 
-                for(let i; i<data.past_medicines.length+1; i++){DrawBuy(data.past_medicines[i])}
+                for(let i=0; i<data.past_medicines.length; i++){
+                    DrawBuy(data.past_medicines[i])
+                }
             }
         }
 
@@ -200,9 +219,6 @@ function sendBuy(id){
 }
 
 function oderBuyH(data){
-    console.log("oder: ", data)
-    console.log(data.id)
-
     const newDiv = document.createElement('div')
     contentBox.appendChild(newDiv)
 
@@ -240,6 +256,25 @@ function oderBuyH(data){
 
 function DrawBuy(m_data){
     console.log(m_data)
+    const newDiv = document.createElement('div')
+    contentBox.appendChild(newDiv)
+
+    const nametext = document.createElement('h5')
+    const pricetext = document.createElement('h5')
+    const numberetext = document.createElement('h5')
+
+    newDiv.appendChild(nametext)
+    newDiv.appendChild(pricetext)
+    newDiv.appendChild(numberetext)
+
+    nametext.innerHTML = `${m_data.medicine.name}`
+    numberetext.innerHTML = `${m_data.quantity}`
+    pricetext.innerHTML = `${m_data.medicine.price}`
+
+    newDiv.classList.add("buyDiv")
+    nametext.classList.add("BDivText")
+    numberetext.classList.add("BDivText")
+    pricetext.classList.add("BDivText")
 }
 
 function DrawDoctorHTML(){
