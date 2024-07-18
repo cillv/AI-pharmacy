@@ -1,0 +1,67 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: white;
+}
+.container {
+  text-align: center;
+}
+.ai-pharmacy {
+  position: absolute;
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+  font-weight: 900; /* 굵기 조절 */
+  left: 50%; /* 중앙 정렬 */
+  top: 10%; /* 중앙 정렬 */
+  transform: translate(-50%, -50%); /* 중앙 정렬 */
+}
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #000;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-bottom: 300px;
+}
+
+/* 1 */
+.btn-1 {
+  transition: all 0.3s ease;
+}
+.btn-1:hover {
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+}
+/* 
+#button-container {
+  margin-top: 20px;
+} */
+.custom-btn2 {
+  width: 130px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #000;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.b-buttons {
+  margin-top: 10px; /* 위쪽 여백 설정 */
+}

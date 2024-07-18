@@ -1,0 +1,11 @@
+.star-checkbox {
+  display: none;
+}
+.star-label {
+  font-size: 2em;
+  color: gray;
+  cursor: pointer;
+}
+.star-checkbox:checked ~ .star-label {
+  color: gold;
+}
