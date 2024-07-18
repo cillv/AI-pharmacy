@@ -56,7 +56,6 @@ async function getSeverAPI(type, id){
             url += `api/v1/receipts/${id}`
         }
 
-        console.log(url)
         if(type == "DELETE"){
             const res = await fetch(url, {
                 mode: "cors", 
@@ -81,7 +80,6 @@ async function getSeverAPI(type, id){
             });
 
             const data = await res.json();
-            console.log("API: ", data)
     
             if(type=="buy"){
                 contentBox.innerHTML = ""
@@ -201,6 +199,10 @@ async function getSeverAPI(type, id){
                 for(let i=0; i<data.past_medicines.length; i++){
                     DrawBuy(data.past_medicines[i])
                 }
+                const btn = document.createElement('button');
+                contentBox.appendChild(btn)
+                btn.innerHTML = "뒤로가기"
+                btn.onclick = function() { DrawBuyHTML() };
             }
         }
 
@@ -255,7 +257,6 @@ function oderBuyH(data){
 }
 
 function DrawBuy(m_data){
-    console.log(m_data)
     const newDiv = document.createElement('div')
     contentBox.appendChild(newDiv)
 
@@ -282,8 +283,6 @@ function DrawDoctorHTML(){
 }
 
 function oderDoctorH(data){
-    console.log("Doctor : ", data)
-
     const newDiv = document.createElement('div')
     contentBox.appendChild(newDiv)
 
@@ -315,9 +314,6 @@ function sendJang(id){
 }
 
 function oderJangH(data){
-    console.log("Jang: ", data)
-    console.log(data.medicine.company)
-
     const newDiv = document.createElement('div')
     contentBox.appendChild(newDiv)
 
