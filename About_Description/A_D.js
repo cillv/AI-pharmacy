@@ -1,14 +1,10 @@
-/* 들어갈 기능
-    장바구니 저장
-    즐겨찾기 저장
-*/
-
 // access 토큰 만료되면 쓸거
 let token = localStorage.getItem("refresh")
 
 //진단 내역 받아올때 쓸 토큰
 let access = localStorage.getItem("access")
 
+//html 요소
 const needLogIN = document.getElementById("needLogIN")
 
 const m_name = document.getElementById("m_name")
@@ -32,8 +28,8 @@ const m_beware_food = document.getElementById("m_beware_food")
 
 const m_number_input = document.getElementById("m_number")
 
-let check_MB_S = false
 
+//로그인 상태 체크
 function login_state_check(){
     if (token == undefined && access == undefined){
         needLogIN.classList.add("hidden")
@@ -57,7 +53,7 @@ function putINB(){
     }
 }
 
-async function getSeverAPI(id, type, how_use){
+async function getSeverAPI(id, type){
     try {
       url = BASE_URL
   
@@ -74,6 +70,24 @@ async function getSeverAPI(id, type, how_use){
         const data = await res.json();
 
         drawA_D(data)
+
+        return data;
+      }
+      else if(type == "getR"){
+        url += `api/v1/medicines/${id}/reviews/`
+        const res = await fetch(url, {
+        mode: "cors", 
+        method: "Get",
+        headers: {
+            "Content-Type": "application/json",
+        }
+        });
+
+        const data = await res.json();
+
+        for(let i=0; i<data.length; i++){
+            draw_R(data[i])
+        }
 
         return data;
       }
@@ -111,6 +125,7 @@ async function getSeverAPI(id, type, how_use){
     }
 }
 
+//상세정보 그리기
 function drawA_D(data){
     m_name.innerHTML = `${data.name}`
     m_score.innerHTML = `평점 : ${data.average_rating}`
@@ -132,6 +147,11 @@ function drawA_D(data){
     m_beware_food.innerHTML = `${data.beware_food}`
 }
 
+function draw_R(data){
+    console.log(data)
+}
+
 var A_D_NEED_ID = localStorage.getItem("A_D_NEED_ID")
-getSeverAPI(A_D_NEED_ID, "get", "load_info")
+getSeverAPI(A_D_NEED_ID, "get")
+getSeverAPI(A_D_NEED_ID, "getR")
 login_state_check()

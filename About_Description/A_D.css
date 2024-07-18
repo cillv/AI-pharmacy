@@ -33,12 +33,16 @@ h1 {
     display: flex;
 }
 
-.onediv iframe{
+.onediv img{
     border: none;
     width: 40%;
     height: 20%;
     margin-right: 10%;
     margin-left: 10%;
+}
+
+.onediv div{
+    margin-top: 5%;
 }
 
 .fun{
@@ -76,16 +80,31 @@ h1 {
 }
 
 .twodiv{
-    
-}
-
-.twodiv div{
     width: 100%;
     height: 100%;
     display: flex;
     float: left;
 }
 
+.twodiv input{
+    margin-left: 51%;
+}
+
+.R_Div{
+    display: flex;
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+
+.R_Div h5{
+    padding: 1%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: solid black;
+    background-color: gainsboro;
+}
 
 /* 기능성 */
 .hidden{
