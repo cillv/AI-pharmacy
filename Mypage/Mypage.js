@@ -52,6 +52,9 @@ async function getSeverAPI(type, id){
         else if (type == "DELETE"){
             url += `api/v1/inventories/${id}/`
         }
+        else if (type == "GETSend"){
+            url += `api/v1/receipts/${id}`
+        }
 
         console.log(url)
         if(type == "DELETE"){
@@ -86,23 +89,19 @@ async function getSeverAPI(type, id){
                 const newDiv = document.createElement('div')
                 contentBox.appendChild(newDiv)
 
-                const nametext = document.createElement('h5')
                 const buy_datetext = document.createElement('h5')
                 const numberetext = document.createElement('h5')
 
-                newDiv.appendChild(nametext)
                 newDiv.appendChild(buy_datetext)
                 newDiv.appendChild(numberetext)
 
-                nametext.innerHTML = `약 이름`
                 buy_datetext.innerHTML = `구매날짜`
-                numberetext.innerHTML = `개수`
+                numberetext.innerHTML = `총금액`
+
 
                 newDiv.classList.add("buyDiv")
-                nametext.classList.add("buyDivText")
-                buy_datetext.classList.add("buyDivText")
-                numberetext.classList.add("buyDivText")
-
+                buy_datetext.classList.add("BDivText")
+                numberetext.classList.add("BDivText")
 
                 for(let i=0; i<data.length; i++){oderBuyH(data[i])}
             }
@@ -155,6 +154,35 @@ async function getSeverAPI(type, id){
 
                 for(let i=0; i<data.length; i++){oderJangH(data[i])}
             }
+            else if (type == "GETSend"){
+                console.log(data)
+                contentBox.innerHTML = ""
+
+                const newDiv = document.createElement('div')
+                contentBox.appendChild(newDiv)
+
+                const MDiv = document.createElement('div')
+                contentBox.appendChild(MDiv)
+
+                const buy_datetext = document.createElement('h5')
+                const numberetext = document.createElement('h5')
+                const M_S = document.createElement('h5')
+
+                newDiv.appendChild(numberetext)
+                newDiv.appendChild(buy_datetext)
+                MDiv.appendChild(M_S)
+
+                buy_datetext.innerHTML = `구매날짜: ${data.purchase_at}`
+                numberetext.innerHTML = `총금액: ${data.total_price}`
+                M_S.innerHTML = `구매한 약 목록`
+
+                newDiv.classList.add("buyDiv")
+                MDiv.classList.add("buyDiv")
+                buy_datetext.classList.add("B_A_DivText")
+                numberetext.classList.add("B_A_DivText")
+
+                for(let i; i<data.past_medicines.length+1; i++){DrawBuy(data.past_medicines[i])}
+            }
         }
 
     } catch (error) {
@@ -167,6 +195,10 @@ function DrawBuyHTML(){
     getSeverAPI("buy")
 }
 
+function sendBuy(id){
+    getSeverAPI("GETSend", id)
+}
+
 function oderBuyH(data){
     console.log("oder: ", data)
     console.log(data.id)
@@ -175,28 +207,39 @@ function oderBuyH(data){
     contentBox.appendChild(newDiv)
 
     let id = data.id
+    newDiv.id = id
 
-    let name = data.medicine
     let buy_date = data.purchase_at
-    let number = data.quantity
+    let number = data.total_price
 
-
-    const nametext = document.createElement('h5')
     const buy_datetext = document.createElement('h5')
     const numberetext = document.createElement('h5')
+    const A_D_B = document.createElement("button")
+    const RB = document.createElement("button")
 
-    newDiv.appendChild(nametext)
     newDiv.appendChild(buy_datetext)
     newDiv.appendChild(numberetext)
+    newDiv.appendChild(A_D_B)
+    newDiv.appendChild(RB)
 
-    nametext.innerHTML = `${name}`
     buy_datetext.innerHTML = `${buy_date}`
     numberetext.innerHTML = `${number}`
 
+    A_D_B.innerHTML = "더보기"
+    A_D_B.onclick = function() { sendBuy(id) };
+
+    RB.innerHTML = "리뷰 작성"
+    RB.onclick = function() { };
+
     newDiv.classList.add("buyDiv")
-    nametext.classList.add("buyDivText")
-    buy_datetext.classList.add("buyDivText")
-    numberetext.classList.add("buyDivText")
+    buy_datetext.classList.add("BDivText")
+    numberetext.classList.add("BDivText")
+    A_D_B.classList.add("BDivTextB")
+    RB.classList.add("BDivTextB")
+}
+
+function DrawBuy(m_data){
+    console.log(m_data)
 }
 
 function DrawDoctorHTML(){
@@ -243,48 +286,42 @@ function oderJangH(data){
     const newDiv = document.createElement('div')
     contentBox.appendChild(newDiv)
 
-    if (data == undefined){
-        console.log("data null!")
-    }
-    else{
-        let id = data.id
+    let id = data.id
 
-        let number = data.quantity
-        let medicine = data.medicine
+    let number = data.quantity
+    let medicine = data.medicine
 
-        let company = medicine.company
-        let m_id = medicine.id
-        let m_name = medicine.name
-        let m_price = medicine.price
+    let company = medicine.company
+    let m_id = medicine.id
+    let m_name = medicine.name
+    let m_price = medicine.price
 
-        const nametext = document.createElement('h5')
-        const companytext = document.createElement('h5')
-        const numberetext = document.createElement('h5')
-        const pricetext = document.createElement('h5')
-        const btn = document.createElement('button');
+    const nametext = document.createElement('h5')
+    const companytext = document.createElement('h5')
+    const numberetext = document.createElement('h5')
+    const pricetext = document.createElement('h5')
+    const btn = document.createElement('button');
 
-        newDiv.appendChild(nametext)
-        newDiv.appendChild(companytext)
-        newDiv.appendChild(numberetext)
-        newDiv.appendChild(pricetext)
-        newDiv.appendChild(btn)
+    newDiv.appendChild(nametext)
+    newDiv.appendChild(companytext)
+    newDiv.appendChild(numberetext)
+    newDiv.appendChild(pricetext)
+    newDiv.appendChild(btn)
 
-        btn.innerHTML = "취소"
-        btn.onclick = function() { sendJang(id) };
+    btn.innerHTML = "취소"
+    btn.onclick = function() { sendJang(id) };
 
-        nametext.innerHTML = `${m_name}`
-        companytext.innerHTML = `${company}`
-        numberetext.innerHTML = `${number}개`
-        pricetext.innerHTML = `${m_price}원`
+    nametext.innerHTML = `${m_name}`
+    companytext.innerHTML = `${company}`
+    numberetext.innerHTML = `${number}개`
+    pricetext.innerHTML = `${m_price}원`
 
-        newDiv.classList.add("buyDiv")
-        nametext.classList.add("JDivText")
-        companytext.classList.add("JDivText")
-        numberetext.classList.add("JDivText")
-        pricetext.classList.add("JDivText")
-        btn.classList.add("JDivText")
-    }
-
+    newDiv.classList.add("buyDiv")
+    nametext.classList.add("JDivText")
+    companytext.classList.add("JDivText")
+    numberetext.classList.add("JDivText")
+    pricetext.classList.add("JDivText")
+    btn.classList.add("JDivText")
 }
 
 document.body.addEventListener("submit", login_state_check())
