@@ -47,7 +47,7 @@ async function loginSever(userID, userPW) {
         const data = await res.json();
         console.log(data);
         localStorage.setItem("name", data["name"]);
-        window.location.href = "../main/main.html";
+        window.location.href = "../pharmacy/pharmacy.html";
       } catch (error) {
         console.error("네트워크 요청 실패:", error);
         alert("회원가입 중 오류가 발생했습니다. 나중에 다시 시도해주세요.");

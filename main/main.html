@@ -7,22 +7,33 @@
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <div class="top-lines"></div>
+    <button
+      class="ai-pharmacy"
+      onclick="window.top.location.href='../main/main.html'"
+    >
+      AI_Pharmacy
+    </button>
     <div class="nav-buttons">
       <button
-        onclick="location.href='../../log in/log.html'"
-        id="usernameDisplay"
-      ></button>
-      <button onclick="location.href='../../SignUp/SignUpLaw/SignUPLaw.html'">
-        회원가입
+        onclick="window.top.location.href='../pharmacy/pharmacy.html'"
+        id="pharmacy"
+      >
+        약국지점
       </button>
-      <button onclick="location.href='../../Mypage/Mypage.html'">
+      <div id="UN" class="hidden">사용자 이름</div>
+      <button
+        onclick="window.top.location.href='../log in/log.html'"
+        id="loginB"
+      >
+        로그인
+      </button>
+      <button class="hidden" id="logoutB">로그아웃</button>
+      <button onclick="window.top.location.href='../Mypage/Mypage.html'">
         마이페이지
       </button>
+      <button onclick="clickBox()">장바구니</button>
     </div>
-    <div class="ai-pharmacy" onclick="location.href='../../main/main.html'">
-      AI_Pharmacy
-    </div>
+    <div class="top-lines"></div>
     <div class="banner">
       <img src="../assets/info logo2.jpg" class="banner-image" />
       <img src="../assets/info 2023 party.png" class="banner-image" />
@@ -40,5 +51,6 @@
       </div>
     </div>
     <script src="main.js"></script>
+    <script src="../url.js"></script>
   </body>
 </html>

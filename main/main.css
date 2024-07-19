@@ -1,23 +1,33 @@
-body,
-html {
-  height: 100%;
+* {
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  background-color: white;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.ai-pharmacy {
+  position: absolute;
+  font-family: "Playfair Display", serif;
+  top: 8px;
+  left: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  font-weight: 900;
+
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
 }
 
 .top-lines {
   width: 100%;
-  height: 44px; /* 20px top margin + 2 * 2px line thickness + 20px between lines */
+  height: auto;
   position: absolute;
   top: 45px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: white; /* 선까지 흰색으로 채우기 */
 }
 
 .top-lines::after {
@@ -40,8 +50,17 @@ html {
   color: gray;
   border: none;
   padding: 10px;
-  font-size: 20px; /* 폰트 크기 증가 */
+  font-size: 15px;
   cursor: pointer;
+  margin-left: 20px;
+}
+
+.nav-buttons div {
+  background-color: transparent;
+  color: gray;
+  border: none;
+  padding: 10px;
+  font-size: 15px;
   margin-left: 20px;
 }
 
@@ -49,13 +68,10 @@ html {
   color: black;
 }
 
-.ai-pharmacy {
-  position: absolute;
-  font-family: "Playfair Display", serif;
-  top: 8px;
-  left: 15px; /* 기존 10px에서 5px 오른쪽으로 이동 */
-  font-size: 24px;
-  font-weight: 900; /* 굵기 조절 */
+/* 기능성 */
+
+.hidden {
+  display: none;
 }
 
 .banner {
@@ -88,7 +104,6 @@ html {
 .banner-image.active {
   opacity: 1;
 }
-/* 이동 버튼 */
 
 a[class*="btn"] {
   text-decoration: none;
@@ -103,16 +118,16 @@ a[class*="btn"] {
   flex-direction: column; /* 가로 정렬 */
   justify-content: center; /* 가운데 정렬 */
   gap: 80px; /* 버튼 간격 조정 */
-  margin-top: 0px;
-  margin-left: 1000px;
+  margin-top: 300px;
+  margin-left: 1200px;
 }
 
 .btn-3d {
   position: relative;
-
+  width: 300px;
   display: inline-block;
   font-size: 40px; /* 폰트 크기 증가 */
-  padding: 20px 30px; /* 버튼 크기 고정 */
+  padding: 20px 30px 20px 20px; /* 버튼 크기 고정 */
   color: white;
   margin: 10px 0; /* 세로 간격 조정 */
   border-radius: 6px;

@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>리뷰창</title>
-    <link href="test.css" rel="stylesheet" />
+    <title>Document</title>
+    <link rel="stylesheet" href="test.css" />
   </head>
   <body>
-    <form class="mb-3" name="myform" id="myform" method="post">
-      <fieldset>
-        <span class="text-bold">별점을 선택해주세요</span>
-        <input type="radio" name="reviewStar" value="5" id="rate1" /><label
-          for="rate1"
-          >★</label
-        >
-        <input type="radio" name="reviewStar" value="4" id="rate2" /><label
-          for="rate2"
-          >★</label
-        >
-        <input type="radio" name="reviewStar" value="3" id="rate3" /><label
-          for="rate3"
-          >★</label
-        >
-        <input type="radio" name="reviewStar" value="2" id="rate4" /><label
-          for="rate4"
-          >★</label
-        >
-        <input type="radio" name="reviewStar" value="1" id="rate5" /><label
-          for="rate5"
-          >★</label
-        >
-      </fieldset>
-      <div>
-        <textarea
-          class="col-auto form-control"
-          type="text"
-          id="reviewContents"
-          placeholder="200자 이내로 작성해주세요"
-          maxlength="200"
-        ></textarea>
+    <button
+      class="ai-pharmacy"
+      onclick="window.top.location.href='../main/main.html'"
+    >
+      AI_Pharmacy
+    </button>
+    <div class="nav-buttons">
+      <div id="UN" class="hidden">사용자 이름</div>
+      <button
+        onclick="window.top.location.href='../log in/log.html'"
+        id="loginB"
+      >
+        로그인
+      </button>
+      <button class="hidden" id="logoutB">로그아웃</button>
+      <button onclick="window.top.location.href='../Mypage/Mypage.html'">
+        마이페이지
+      </button>
+      <button onclick="clickBox()">장바구니</button>
+    </div>
+    <div class="top-lines"></div>
+
+    <div class="banner">
+      <img src="../assets/info logo2.jpg" class="banner-image" />
+      <img src="../assets/info 2023 party.png" class="banner-image" />
+      <img src="../assets/info 2023 GO.png" class="banner-image" />
+    </div>
+    <div class="btn-container">
+      <div
+        onclick="location.href='../InformationScreen/InformationScreen.html'"
+        class="btn-3d green"
+      >
+        약 검색
       </div>
-    </form>
+      <div onclick="location.href='../search/search.html'" class="btn-3d green">
+        진단하기
+      </div>
+    </div>
+
+    <script src="../url.js"></script>
+    <script src="test.js"></script>
   </body>
 </html>

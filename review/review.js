@@ -26,6 +26,7 @@ document.getElementById("submitReview").addEventListener("click", function () {
       const data = await res.json();
       console.log(data);
       alert("리뷰작성이 완료되었습니다.");
+      window.location.href = "../Mypage/Mypage.html";
     } catch (error) {
       console.error("네트워크 요청 실패:", error);
       alert("제출하지 못했습니다. 다시 시도하세요");

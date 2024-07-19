@@ -48,7 +48,7 @@ html {
   margin-top: 20px;
 } */
 .custom-btn2 {
-  width: 130px;
+  width: auto;
   height: 40px;
   padding: 10px 25px;
   border: 2px solid #000;
