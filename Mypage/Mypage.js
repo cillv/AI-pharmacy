@@ -50,7 +50,6 @@ async function getSeverAPI(type, id) {
       url += `api/v1/receipts/${id}`;
     }
 
-    console.log(url);
     if (type == "DELETE") {
       const res = await fetch(url, {
         mode: "cors",
@@ -73,7 +72,6 @@ async function getSeverAPI(type, id) {
       });
 
       const data = await res.json();
-      console.log("API: ", data);
 
       if (type == "buy") {
         contentBox.innerHTML = "";
@@ -149,7 +147,6 @@ async function getSeverAPI(type, id) {
           oderJangH(data[i]);
         }
       } else if (type == "GETSend") {
-        console.log(data);
         contentBox.innerHTML = "";
 
         const newDiv = document.createElement("div");
@@ -172,12 +169,36 @@ async function getSeverAPI(type, id) {
 
         newDiv.classList.add("buyDiv");
         MDiv.classList.add("buyDiv");
+        M_S.style.width = "98%";
+        M_S.style.margin = "1%";
         buy_datetext.classList.add("B_A_DivText");
         numberetext.classList.add("B_A_DivText");
 
-        for (let i = 0; i < data.past_medicines.length + 1; i++) {
+        const nametext = document.createElement("h5");
+        const pricetext = document.createElement("h5");
+        const number_text = document.createElement("h5");
+
+        MDiv.appendChild(nametext);
+        MDiv.appendChild(pricetext);
+        MDiv.appendChild(number_text);
+
+        nametext.innerHTML = `제품명`;
+        number_text.innerHTML = `수량`;
+        pricetext.innerHTML = `가격`;
+
+        nametext.classList.add("BDivText");
+        number_text.classList.add("BDivText");
+        pricetext.classList.add("BDivText");
+
+        for (let i = 0; i < data.past_medicines.length; i++) {
           DrawBuy(data.past_medicines[i]);
         }
+        const btn = document.createElement("button");
+        contentBox.appendChild(btn);
+        btn.innerHTML = "뒤로가기";
+        btn.onclick = function () {
+          DrawBuyHTML();
+        };
       }
     }
   } catch (error) {
@@ -195,9 +216,6 @@ function sendBuy(id) {
 }
 
 function oderBuyH(data) {
-  console.log("oder: ", data);
-  console.log(data.id);
-
   const newDiv = document.createElement("div");
   contentBox.appendChild(newDiv);
 
@@ -226,9 +244,7 @@ function oderBuyH(data) {
   };
 
   RB.innerHTML = "리뷰 작성";
-  RB.onclick = function () {
-    window.location.href = "../review/review.html";
-  };
+  RB.onclick = function () {};
 
   newDiv.classList.add("buyDiv");
   buy_datetext.classList.add("BDivText");
@@ -238,7 +254,25 @@ function oderBuyH(data) {
 }
 
 function DrawBuy(m_data) {
-  console.log(m_data);
+  const newDiv = document.createElement("div");
+  contentBox.appendChild(newDiv);
+
+  const nametext = document.createElement("h5");
+  const pricetext = document.createElement("h5");
+  const numberetext = document.createElement("h5");
+
+  newDiv.appendChild(nametext);
+  newDiv.appendChild(pricetext);
+  newDiv.appendChild(numberetext);
+
+  nametext.innerHTML = `${m_data.medicine.name}`;
+  numberetext.innerHTML = `${m_data.quantity}`;
+  pricetext.innerHTML = `${m_data.medicine.price}`;
+
+  newDiv.classList.add("buyDiv");
+  nametext.classList.add("BDivText");
+  numberetext.classList.add("BDivText");
+  pricetext.classList.add("BDivText");
 }
 
 function DrawDoctorHTML() {
@@ -246,8 +280,6 @@ function DrawDoctorHTML() {
 }
 
 function oderDoctorH(data) {
-  console.log("Doctor : ", data);
-
   const newDiv = document.createElement("div");
   contentBox.appendChild(newDiv);
 
@@ -279,9 +311,6 @@ function sendJang(id) {
 }
 
 function oderJangH(data) {
-  console.log("Jang: ", data);
-  console.log(data.medicine.company);
-
   const newDiv = document.createElement("div");
   contentBox.appendChild(newDiv);
 
