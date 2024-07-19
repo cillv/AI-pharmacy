@@ -175,7 +175,7 @@ async function getSeverAPI(type, id) {
         buy_datetext.classList.add("B_A_DivText");
         numberetext.classList.add("B_A_DivText");
 
-        for (let i; i < data.past_medicines.length + 1; i++) {
+        for (let i = 0; i < data.past_medicines.length + 1; i++) {
           DrawBuy(data.past_medicines[i]);
         }
       }
