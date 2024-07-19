@@ -121,6 +121,8 @@ function draw_search_list(id, name, price, company){
 
 //버튼
 function Back_Button(){
+  MLB.innerHTML= ""
+  
   if (PAGENUMBER == 1){PAGENUMBER = 1;}
   else {PAGENUMBER -= 2;}
   
@@ -148,7 +150,8 @@ function makeBox(Id, name, price, remaining, m_img_url){
   const newMName = document.createElement('h5')
   const newMPrice = document.createElement('h5')
   const newMRemain = document.createElement('h5')
-  const newMImg = document.createElement('iframe')
+  const newMImg = document.createElement('img')
+  // const newMImg = document.createElement('iframe')
 
   MLB.appendChild(newDiv1);
   newDiv1.appendChild(newMImg)
@@ -157,6 +160,8 @@ function makeBox(Id, name, price, remaining, m_img_url){
   newDiv1.appendChild(newMRemain)
 
   newMImg.src = m_img_url
+  // newMImg.src = m_img_url
+  console.log("imgurl: ", m_img_url)
 
   newDiv1.id = Id
 

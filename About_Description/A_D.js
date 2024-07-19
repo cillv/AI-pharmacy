@@ -1,14 +1,10 @@
-/* 들어갈 기능
-    장바구니 저장
-    즐겨찾기 저장
-*/
-
 // access 토큰 만료되면 쓸거
 let token = localStorage.getItem("refresh")
 
 //진단 내역 받아올때 쓸 토큰
 let access = localStorage.getItem("access")
 
+//html 요소
 const needLogIN = document.getElementById("needLogIN")
 
 const m_name = document.getElementById("m_name")
@@ -32,8 +28,9 @@ const m_beware_food = document.getElementById("m_beware_food")
 
 const m_number_input = document.getElementById("m_number")
 
-let check_MB_S = false
+const RE_DIV = document.getElementById("RE_DIV")
 
+//로그인 상태 체크
 function login_state_check(){
     if (token == undefined && access == undefined){
         needLogIN.classList.add("hidden")
@@ -57,7 +54,7 @@ function putINB(){
     }
 }
 
-async function getSeverAPI(id, type, how_use){
+async function getSeverAPI(id, type){
     try {
       url = BASE_URL
   
@@ -74,6 +71,48 @@ async function getSeverAPI(id, type, how_use){
         const data = await res.json();
 
         drawA_D(data)
+
+        return data;
+      }
+      else if(type == "getR"){
+        url += `api/v1/medicines/${id}/reviews/`
+        const res = await fetch(url, {
+        mode: "cors", 
+        method: "Get",
+        headers: {
+            "Content-Type": "application/json",
+        }
+        });
+
+        const data = await res.json();
+
+        const newDiv = document.createElement("div")
+        RE_DIV.appendChild(newDiv)
+
+        const username = document.createElement("h6")
+        const rating = document.createElement("h6")
+        const detail = document.createElement("h6")
+        const updated = document.createElement("h6")
+
+        username.innerHTML = `닉네임`
+        rating.innerHTML = `평점`
+        detail.innerHTML = `후기`
+        updated.innerHTML = `게시날짜`
+
+        newDiv.appendChild(username)
+        newDiv.appendChild(rating)
+        newDiv.appendChild(detail)
+        newDiv.appendChild(updated)
+        
+        newDiv.classList.add("R_U_Div")
+        username.classList.add("R_U_text")
+        rating.classList.add("R_U_text")
+        detail.classList.add("R_U_text2")
+        updated.classList.add("R_U_text")
+
+        for(let i=0; i<data.length; i++){
+            draw_R(data[i])
+        }
 
         return data;
       }
@@ -111,6 +150,7 @@ async function getSeverAPI(id, type, how_use){
     }
 }
 
+//상세정보 그리기
 function drawA_D(data){
     m_name.innerHTML = `${data.name}`
     m_score.innerHTML = `평점 : ${data.average_rating}`
@@ -132,6 +172,35 @@ function drawA_D(data){
     m_beware_food.innerHTML = `${data.beware_food}`
 }
 
+function draw_R(data){
+    console.log(data)
+    
+    const newDiv = document.createElement("div")
+    RE_DIV.appendChild(newDiv)
+
+    const username = document.createElement("h6")
+    const rating = document.createElement("h6")
+    const detail = document.createElement("h6")
+    const updated = document.createElement("h6")
+
+    username.innerHTML = `${data.user.username}`
+    rating.innerHTML = `${data.rating}`
+    detail.innerHTML = `${data.detail}`
+    updated.innerHTML = `${data.updated_at}`
+
+    newDiv.appendChild(username)
+    newDiv.appendChild(rating)
+    newDiv.appendChild(detail)
+    newDiv.appendChild(updated)
+    
+    newDiv.classList.add("R_U_Div2")
+    username.classList.add("R_U_text")
+    rating.classList.add("R_U_text")
+    detail.classList.add("R_U_text2")
+    updated.classList.add("R_U_text")
+}
+
 var A_D_NEED_ID = localStorage.getItem("A_D_NEED_ID")
-getSeverAPI(A_D_NEED_ID, "get", "load_info")
+getSeverAPI(A_D_NEED_ID, "get")
+getSeverAPI(A_D_NEED_ID, "getR")
 login_state_check()
