@@ -6,12 +6,12 @@ document.getElementById("submitReview").addEventListener("click", function () {
   submitReview(star, reviewWrite);
   console.log(star);
   console.log(reviewWrite);
-  let id;
+  console.log(localStorage.getItem("reviewid"));
   async function submitReview(star, reviewWrite) {
     try {
-      let id = localStorage.getItem();
+      let id = localStorage.getItem("reviewid");
       const res = await fetch(
-        BASE_URL + "api/v1/medicines/" + `${id}/` + "/reviews/",
+        BASE_URL + "api/v1/medicines/" + `${id}` + "/reviews/",
         {
           mode: "cors",
           method: "POST",
