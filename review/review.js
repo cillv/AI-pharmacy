@@ -6,23 +6,27 @@ document.getElementById("submitReview").addEventListener("click", function () {
   submitReview(star, reviewWrite);
   console.log(star);
   console.log(reviewWrite);
-
+  let id;
   async function submitReview(star, reviewWrite) {
     try {
-      const res = await fetch(BASE_URL + "api/v1/medicines/1 /reviews/", {
-        mode: "cors",
-        method: "POST",
-        credentials: "include",
+      let id = localStorage.getItem();
+      const res = await fetch(
+        BASE_URL + "api/v1/medicines/" + `${id}/` + "/reviews/",
+        {
+          mode: "cors",
+          method: "POST",
+          credentials: "include",
 
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("access")}`,
-        },
-        body: JSON.stringify({
-          rating: star,
-          detail: reviewWrite,
-        }),
-      });
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access")}`,
+          },
+          body: JSON.stringify({
+            rating: star,
+            detail: reviewWrite,
+          }),
+        }
+      );
       const data = await res.json();
       console.log(data);
       alert("리뷰작성이 완료되었습니다. ");
