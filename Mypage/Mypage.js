@@ -2,7 +2,6 @@ const NotLogIn = document.querySelector("#notlogin");
 const YesLogIn = document.querySelector("#yeslogin");
 
 const Benner = document.querySelector("#benner");
-// const UserImg = document.querySelector("#user_img")
 const username_html = document.getElementById("username_h3");
 
 const contentBox = document.getElementById("contentM");
@@ -71,141 +70,144 @@ async function getSeverAPI(type, id) {
         },
       });
 
-      const data = await res.json();
+            const data = await res.json();
+    
+            if(type=="buy"){
+                contentBox.innerHTML = ""
 
-      if (type == "buy") {
-        contentBox.innerHTML = "";
+                const newDiv = document.createElement('div')
+                contentBox.appendChild(newDiv)
 
-        const newDiv = document.createElement("div");
-        contentBox.appendChild(newDiv);
+                const buy_datetext = document.createElement('h5')
+                const numberetext = document.createElement('h5')
 
-        const buy_datetext = document.createElement("h5");
-        const numberetext = document.createElement("h5");
+                newDiv.appendChild(buy_datetext)
+                newDiv.appendChild(numberetext)
 
-        newDiv.appendChild(buy_datetext);
-        newDiv.appendChild(numberetext);
+                buy_datetext.innerHTML = `구매날짜`
+                numberetext.innerHTML = `총금액`
 
-        buy_datetext.innerHTML = `구매날짜`;
-        numberetext.innerHTML = `총금액`;
 
-        newDiv.classList.add("buyDiv");
-        buy_datetext.classList.add("BDivText");
-        numberetext.classList.add("BDivText");
+                newDiv.classList.add("buyDiv")
+                buy_datetext.classList.add("BDivText")
+                numberetext.classList.add("BDivText")
 
-        for (let i = 0; i < data.length; i++) {
-          oderBuyH(data[i]);
+                for(let i=0; i<data.length; i++){oderBuyH(data[i])}
+            }
+            else if(type=="doctor"){
+                contentBox.innerHTML = ""
+
+                const newDiv = document.createElement('div')
+                contentBox.appendChild(newDiv)
+
+                const titleh = document.createElement('h5')
+                const datah = document.createElement('h5')
+
+                newDiv.appendChild(titleh)
+                newDiv.appendChild(datah)
+
+                titleh.innerHTML = `진단 내용`
+                datah.innerHTML = `날짜`
+
+                newDiv.classList.add("buyDiv")
+                titleh.classList.add("DDivText")
+                datah.classList.add("DDivText")
+                
+                for(let i=0; i<data.length; i++){oderDoctorH(data[i])}
+            }
+            else if (type == "jang"){
+                contentBox.innerHTML = ""
+                const infobar = document.createElement('div')
+                contentBox.appendChild(infobar)
+
+                const nametext = document.createElement('h5')
+                const companytext = document.createElement('h5')
+                const numberetext = document.createElement('h5')
+                const pricetext = document.createElement('h5')
+
+                infobar.appendChild(nametext)
+                infobar.appendChild(companytext)
+                infobar.appendChild(numberetext)
+                infobar.appendChild(pricetext)
+                
+                nametext.innerHTML = `약 이름`
+                companytext.innerHTML = `제조사`
+                numberetext.innerHTML = `개수`
+                pricetext.innerHTML = `가격(1개 기준)`
+
+                infobar.classList.add("buyDiv")
+                nametext.classList.add("JDivText")
+                companytext.classList.add("JDivText")
+                numberetext.classList.add("JDivText")
+                pricetext.classList.add("JDivText")
+
+                for(let i=0; i<data.length; i++){oderJangH(data[i])}
+            }
+            else if (type == "GETSend"){
+                contentBox.innerHTML = ""
+
+                const newDiv = document.createElement('div')
+                contentBox.appendChild(newDiv)
+
+                const MDiv = document.createElement('div')
+                contentBox.appendChild(MDiv)
+
+                const buy_datetext = document.createElement('h5')
+                const numberetext = document.createElement('h5')
+                const M_S = document.createElement('h5')
+
+                newDiv.appendChild(numberetext)
+                newDiv.appendChild(buy_datetext)
+                MDiv.appendChild(M_S)
+
+                buy_datetext.innerHTML = `구매날짜: ${data.purchase_at}`
+                numberetext.innerHTML = `총금액: ${data.total_price}`
+                M_S.innerHTML = `구매한 약 목록`
+
+                newDiv.classList.add("buyDiv")
+                MDiv.classList.add("buyDiv")
+                M_S.style.width = "98%"
+                M_S.style.margin = "1%"
+                buy_datetext.classList.add("B_A_DivText")
+                numberetext.classList.add("B_A_DivText")
+            
+                const nametext = document.createElement('h5')
+                const pricetext = document.createElement('h5')
+                const number_text = document.createElement('h5')
+            
+                MDiv.appendChild(nametext)
+                MDiv.appendChild(pricetext)
+                MDiv.appendChild(number_text)
+            
+                nametext.innerHTML = `제품명`
+                number_text.innerHTML = `수량`
+                pricetext.innerHTML = `가격`
+            
+                nametext.classList.add("BDivText")
+                number_text.classList.add("BDivText")
+                pricetext.classList.add("BDivText")
+
+                for(let i=0; i<data.past_medicines.length; i++){
+                    DrawBuy(data.past_medicines[i])
+                }
+                const btn = document.createElement('button');
+                contentBox.appendChild(btn)
+                btn.innerHTML = "뒤로가기"
+                btn.onclick = function() { DrawBuyHTML() };
+                
+                const RB = document.createElement("button")
+                contentBox.appendChild(RB)
+                RB.innerHTML = "리뷰 작성"
+                RB.style.marginLeft = "1%"
+                RB.onclick = function() { };
+            }
         }
-      } else if (type == "doctor") {
-        contentBox.innerHTML = "";
 
-        const newDiv = document.createElement("div");
-        contentBox.appendChild(newDiv);
-
-        const titleh = document.createElement("h5");
-        const datah = document.createElement("h5");
-
-        newDiv.appendChild(titleh);
-        newDiv.appendChild(datah);
-
-        titleh.innerHTML = `진단 내용`;
-        datah.innerHTML = `날짜`;
-
-        newDiv.classList.add("buyDiv");
-        titleh.classList.add("DDivText");
-        datah.classList.add("DDivText");
-
-        for (let i = 0; i < data.length; i++) {
-          oderDoctorH(data[i]);
-        }
-      } else if (type == "jang") {
-        contentBox.innerHTML = "";
-        const infobar = document.createElement("div");
-        contentBox.appendChild(infobar);
-
-        const nametext = document.createElement("h5");
-        const companytext = document.createElement("h5");
-        const numberetext = document.createElement("h5");
-        const pricetext = document.createElement("h5");
-
-        infobar.appendChild(nametext);
-        infobar.appendChild(companytext);
-        infobar.appendChild(numberetext);
-        infobar.appendChild(pricetext);
-
-        nametext.innerHTML = `약 이름`;
-        companytext.innerHTML = `제조사`;
-        numberetext.innerHTML = `개수`;
-        pricetext.innerHTML = `가격(1개 기준)`;
-
-        infobar.classList.add("buyDiv");
-        nametext.classList.add("JDivText");
-        companytext.classList.add("JDivText");
-        numberetext.classList.add("JDivText");
-        pricetext.classList.add("JDivText");
-
-        for (let i = 0; i < data.length; i++) {
-          oderJangH(data[i]);
-        }
-      } else if (type == "GETSend") {
-        contentBox.innerHTML = "";
-
-        const newDiv = document.createElement("div");
-        contentBox.appendChild(newDiv);
-
-        const MDiv = document.createElement("div");
-        contentBox.appendChild(MDiv);
-
-        const buy_datetext = document.createElement("h5");
-        const numberetext = document.createElement("h5");
-        const M_S = document.createElement("h5");
-
-        newDiv.appendChild(numberetext);
-        newDiv.appendChild(buy_datetext);
-        MDiv.appendChild(M_S);
-
-        buy_datetext.innerHTML = `구매날짜: ${data.purchase_at}`;
-        numberetext.innerHTML = `총금액: ${data.total_price}`;
-        M_S.innerHTML = `구매한 약 목록`;
-
-        newDiv.classList.add("buyDiv");
-        MDiv.classList.add("buyDiv");
-        M_S.style.width = "98%";
-        M_S.style.margin = "1%";
-        buy_datetext.classList.add("B_A_DivText");
-        numberetext.classList.add("B_A_DivText");
-
-        const nametext = document.createElement("h5");
-        const pricetext = document.createElement("h5");
-        const number_text = document.createElement("h5");
-
-        MDiv.appendChild(nametext);
-        MDiv.appendChild(pricetext);
-        MDiv.appendChild(number_text);
-
-        nametext.innerHTML = `제품명`;
-        number_text.innerHTML = `수량`;
-        pricetext.innerHTML = `가격`;
-
-        nametext.classList.add("BDivText");
-        number_text.classList.add("BDivText");
-        pricetext.classList.add("BDivText");
-
-        for (let i = 0; i < data.past_medicines.length; i++) {
-          DrawBuy(data.past_medicines[i]);
-        }
-        const btn = document.createElement("button");
-        contentBox.appendChild(btn);
-        btn.innerHTML = "뒤로가기";
-        btn.onclick = function () {
-          DrawBuyHTML();
-        };
-      }
+    } catch (error) {
+      console.error("네트워크 요청 실패:", error);
+      alert("검색 중 오류가 발생했습니다. 나중에 다시 시도해주세요.");
     }
-  } catch (error) {
-    console.error("네트워크 요청 실패:", error);
-    alert("검색 중 오류가 발생했습니다. 나중에 다시 시도해주세요.");
   }
-}
 
 function DrawBuyHTML() {
   getSeverAPI("buy");
@@ -215,42 +217,34 @@ function sendBuy(id) {
   getSeverAPI("GETSend", id);
 }
 
-function oderBuyH(data) {
-  const newDiv = document.createElement("div");
-  contentBox.appendChild(newDiv);
+function oderBuyH(data){
+    const newDiv = document.createElement('div')
+    contentBox.appendChild(newDiv)
 
-  let id = data.id;
-  newDiv.id = id;
+    let id = data.id
+    newDiv.id = id
 
-  let buy_date = data.purchase_at;
-  let number = data.total_price;
+    let buy_date = data.purchase_at
+    let number = data.total_price
 
-  const buy_datetext = document.createElement("h5");
-  const numberetext = document.createElement("h5");
-  const A_D_B = document.createElement("button");
-  const RB = document.createElement("button");
+    const buy_datetext = document.createElement('h5')
+    const numberetext = document.createElement('h5')
+    const A_D_B = document.createElement("button")
 
-  newDiv.appendChild(buy_datetext);
-  newDiv.appendChild(numberetext);
-  newDiv.appendChild(A_D_B);
-  newDiv.appendChild(RB);
+    newDiv.appendChild(buy_datetext)
+    newDiv.appendChild(numberetext)
+    newDiv.appendChild(A_D_B)
 
-  buy_datetext.innerHTML = `${buy_date}`;
-  numberetext.innerHTML = `${number}`;
+    buy_datetext.innerHTML = `${buy_date}`
+    numberetext.innerHTML = `${number}`
 
-  A_D_B.innerHTML = "더보기";
-  A_D_B.onclick = function () {
-    sendBuy(id);
-  };
+    A_D_B.innerHTML = "더보기"
+    A_D_B.onclick = function() { sendBuy(id) };
 
-  RB.innerHTML = "리뷰 작성";
-  RB.onclick = function () {};
-
-  newDiv.classList.add("buyDiv");
-  buy_datetext.classList.add("BDivText");
-  numberetext.classList.add("BDivText");
-  A_D_B.classList.add("BDivTextB");
-  RB.classList.add("BDivTextB");
+    newDiv.classList.add("buyDiv")
+    buy_datetext.classList.add("BDivText")
+    numberetext.classList.add("BDivText")
+    A_D_B.classList.add("BDivTextB")
 }
 
 function DrawBuy(m_data) {
