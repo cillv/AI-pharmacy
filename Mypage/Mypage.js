@@ -30,56 +30,46 @@ function login_state_check() {
     Benner.classList.remove("hidden");
     username_html.classList.remove("hidden");
 
-<<<<<<< HEAD
-        Benner.classList.remove("hidden")
-        username_html.classList.remove("hidden")
-        
-        username_html.innerHTML = `${userName}님 어서오세요. `
-    }
+    username_html.innerHTML = `${userName}님 어서오세요. `;
+  }
 }
 
-async function getSeverAPI(type, id){
-    try {
-        url = `${BASE_URL}`
+async function getSeverAPI(type, id) {
+  try {
+    url = `${BASE_URL}`;
 
-        if(type == "buy"){
-            url += `api/v1/receipts/`
-        }
-        else if (type == "doctor"){
-            url += `api/v1/diagnosis/history/`
-        }
-        else if (type == "jang"){
-            url += `api/v1/inventories/`
-        }
-        else if (type == "DELETE"){
-            url += `api/v1/inventories/${id}/`
-        }
-        else if (type == "GETSend"){
-            url += `api/v1/receipts/${id}`
-        }
+    if (type == "buy") {
+      url += `api/v1/receipts/`;
+    } else if (type == "doctor") {
+      url += `api/v1/diagnosis/history/`;
+    } else if (type == "jang") {
+      url += `api/v1/inventories/`;
+    } else if (type == "DELETE") {
+      url += `api/v1/inventories/${id}/`;
+    } else if (type == "GETSend") {
+      url += `api/v1/receipts/${id}`;
+    }
 
-        if(type == "DELETE"){
-            const res = await fetch(url, {
-                mode: "cors", 
-                method: "DELETE",
-                headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${access}`
-                },
-            });
+    if (type == "DELETE") {
+      const res = await fetch(url, {
+        mode: "cors",
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${access}`,
+        },
+      });
 
-            DrawJangHTML()
-
-        }
-        else{
-            const res = await fetch(url, {
-                mode: "cors", 
-                method: "Get",
-                headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${access}`
-                },
-            });
+      DrawJangHTML();
+    } else {
+      const res = await fetch(url, {
+        mode: "cors",
+        method: "Get",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${access}`,
+        },
+      });
 
             const data = await res.json();
     
@@ -219,186 +209,16 @@ async function getSeverAPI(type, id){
       console.error("네트워크 요청 실패:", error);
       alert("검색 중 오류가 발생했습니다. 나중에 다시 시도해주세요.");
     }
-=======
-    username_html.innerHTML = `${userName}님 어서오세요. `;
->>>>>>> 5ab5cc5e11552e8ac6deb4984746c290b2043d17
   }
+
+function DrawBuyHTML() {
+  getSeverAPI("buy");
 }
 
-async function getSeverAPI(type, id) {
-  try {
-    url = `${BASE_URL}`;
-
-    if (type == "buy") {
-      url += `api/v1/receipts/`;
-    } else if (type == "doctor") {
-      url += `api/v1/diagnosis/history/`;
-    } else if (type == "jang") {
-      url += `api/v1/inventories/`;
-    } else if (type == "DELETE") {
-      url += `api/v1/inventories/${id}/`;
-    } else if (type == "GETSend") {
-      url += `api/v1/receipts/${id}`;
-    }
-
-    if (type == "DELETE") {
-      const res = await fetch(url, {
-        mode: "cors",
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${access}`,
-        },
-      });
-
-      DrawJangHTML();
-    } else {
-      const res = await fetch(url, {
-        mode: "cors",
-        method: "Get",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${access}`,
-        },
-      });
-
-      const data = await res.json();
-
-      if (type == "buy") {
-        contentBox.innerHTML = "";
-
-        const newDiv = document.createElement("div");
-        contentBox.appendChild(newDiv);
-
-        const buy_datetext = document.createElement("h5");
-        const numberetext = document.createElement("h5");
-
-        newDiv.appendChild(buy_datetext);
-        newDiv.appendChild(numberetext);
-
-        buy_datetext.innerHTML = `구매날짜`;
-        numberetext.innerHTML = `총금액`;
-
-        newDiv.classList.add("buyDiv");
-        buy_datetext.classList.add("BDivText");
-        numberetext.classList.add("BDivText");
-
-        for (let i = 0; i < data.length; i++) {
-          oderBuyH(data[i]);
-        }
-      } else if (type == "doctor") {
-        contentBox.innerHTML = "";
-
-        const newDiv = document.createElement("div");
-        contentBox.appendChild(newDiv);
-
-        const titleh = document.createElement("h5");
-        const datah = document.createElement("h5");
-
-        newDiv.appendChild(titleh);
-        newDiv.appendChild(datah);
-
-        titleh.innerHTML = `진단 내용`;
-        datah.innerHTML = `날짜`;
-
-        newDiv.classList.add("buyDiv");
-        titleh.classList.add("DDivText");
-        datah.classList.add("DDivText");
-
-        for (let i = 0; i < data.length; i++) {
-          oderDoctorH(data[i]);
-        }
-      } else if (type == "jang") {
-        contentBox.innerHTML = "";
-        const infobar = document.createElement("div");
-        contentBox.appendChild(infobar);
-
-        const nametext = document.createElement("h5");
-        const companytext = document.createElement("h5");
-        const numberetext = document.createElement("h5");
-        const pricetext = document.createElement("h5");
-
-        infobar.appendChild(nametext);
-        infobar.appendChild(companytext);
-        infobar.appendChild(numberetext);
-        infobar.appendChild(pricetext);
-
-        nametext.innerHTML = `약 이름`;
-        companytext.innerHTML = `제조사`;
-        numberetext.innerHTML = `개수`;
-        pricetext.innerHTML = `가격(1개 기준)`;
-
-        infobar.classList.add("buyDiv");
-        nametext.classList.add("JDivText");
-        companytext.classList.add("JDivText");
-        numberetext.classList.add("JDivText");
-        pricetext.classList.add("JDivText");
-
-        for (let i = 0; i < data.length; i++) {
-          oderJangH(data[i]);
-        }
-      } else if (type == "GETSend") {
-        contentBox.innerHTML = "";
-
-        const newDiv = document.createElement("div");
-        contentBox.appendChild(newDiv);
-
-        const MDiv = document.createElement("div");
-        contentBox.appendChild(MDiv);
-
-        const buy_datetext = document.createElement("h5");
-        const numberetext = document.createElement("h5");
-        const M_S = document.createElement("h5");
-
-        newDiv.appendChild(numberetext);
-        newDiv.appendChild(buy_datetext);
-        MDiv.appendChild(M_S);
-
-        buy_datetext.innerHTML = `구매날짜: ${data.purchase_at}`;
-        numberetext.innerHTML = `총금액: ${data.total_price}`;
-        M_S.innerHTML = `구매한 약 목록`;
-
-        newDiv.classList.add("buyDiv");
-        MDiv.classList.add("buyDiv");
-        M_S.style.width = "98%";
-        M_S.style.margin = "1%";
-        buy_datetext.classList.add("B_A_DivText");
-        numberetext.classList.add("B_A_DivText");
-
-        const nametext = document.createElement("h5");
-        const pricetext = document.createElement("h5");
-        const number_text = document.createElement("h5");
-
-        MDiv.appendChild(nametext);
-        MDiv.appendChild(pricetext);
-        MDiv.appendChild(number_text);
-
-        nametext.innerHTML = `제품명`;
-        number_text.innerHTML = `수량`;
-        pricetext.innerHTML = `가격`;
-
-        nametext.classList.add("BDivText");
-        number_text.classList.add("BDivText");
-        pricetext.classList.add("BDivText");
-
-        for (let i = 0; i < data.past_medicines.length; i++) {
-          DrawBuy(data.past_medicines[i]);
-        }
-        const btn = document.createElement("button");
-        contentBox.appendChild(btn);
-        btn.innerHTML = "뒤로가기";
-        btn.onclick = function () {
-          DrawBuyHTML();
-        };
-      }
-    }
-  } catch (error) {
-    console.error("네트워크 요청 실패:", error);
-    alert("검색 중 오류가 발생했습니다. 나중에 다시 시도해주세요.");
-  }
+function sendBuy(id) {
+  getSeverAPI("GETSend", id);
 }
 
-<<<<<<< HEAD
 function oderBuyH(data){
     const newDiv = document.createElement('div')
     contentBox.appendChild(newDiv)
@@ -412,6 +232,7 @@ function oderBuyH(data){
     const buy_datetext = document.createElement('h5')
     const numberetext = document.createElement('h5')
     const A_D_B = document.createElement("button")
+    const RB = document.createElement("button")
 
     newDiv.appendChild(buy_datetext)
     newDiv.appendChild(numberetext)
@@ -424,57 +245,14 @@ function oderBuyH(data){
     A_D_B.innerHTML = "더보기"
     A_D_B.onclick = function() { sendBuy(id) };
 
+    RB.innerHTML = "리뷰 작성"
+    RB.onclick = function() { };
+
     newDiv.classList.add("buyDiv")
     buy_datetext.classList.add("BDivText")
     numberetext.classList.add("BDivText")
     A_D_B.classList.add("BDivTextB")
-
-=======
-function DrawBuyHTML() {
-  getSeverAPI("buy");
->>>>>>> 5ab5cc5e11552e8ac6deb4984746c290b2043d17
-}
-
-function sendBuy(id) {
-  getSeverAPI("GETSend", id);
-}
-
-function oderBuyH(data) {
-  const newDiv = document.createElement("div");
-  contentBox.appendChild(newDiv);
-
-  let id = data.id;
-  newDiv.id = id;
-
-  let buy_date = data.purchase_at;
-  let number = data.total_price;
-
-  const buy_datetext = document.createElement("h5");
-  const numberetext = document.createElement("h5");
-  const A_D_B = document.createElement("button");
-  const RB = document.createElement("button");
-
-  newDiv.appendChild(buy_datetext);
-  newDiv.appendChild(numberetext);
-  newDiv.appendChild(A_D_B);
-  newDiv.appendChild(RB);
-
-  buy_datetext.innerHTML = `${buy_date}`;
-  numberetext.innerHTML = `${number}`;
-
-  A_D_B.innerHTML = "더보기";
-  A_D_B.onclick = function () {
-    sendBuy(id);
-  };
-
-  RB.innerHTML = "리뷰 작성";
-  RB.onclick = function () {};
-
-  newDiv.classList.add("buyDiv");
-  buy_datetext.classList.add("BDivText");
-  numberetext.classList.add("BDivText");
-  A_D_B.classList.add("BDivTextB");
-  RB.classList.add("BDivTextB");
+    RB.classList.add("BDivTextB")
 }
 
 function DrawBuy(m_data) {
