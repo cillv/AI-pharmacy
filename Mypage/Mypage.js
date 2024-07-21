@@ -2,7 +2,6 @@ const NotLogIn = document.querySelector("#notlogin");
 const YesLogIn = document.querySelector("#yeslogin");
 
 const Benner = document.querySelector("#benner");
-// const UserImg = document.querySelector("#user_img")
 const username_html = document.getElementById("username_h3");
 
 const contentBox = document.getElementById("contentM");
