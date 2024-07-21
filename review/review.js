@@ -9,14 +9,14 @@ document.getElementById("submitReview").addEventListener("click", function () {
 
   async function submitReview(star, reviewWrite) {
     try {
-      const res = await fetch(BASE_URL + "api/v1/medicines/1/reviews/", {
+      const res = await fetch(BASE_URL + "api/v1/medicines/1 /reviews/", {
         mode: "cors",
         method: "POST",
         credentials: "include",
 
         headers: {
           "Content-Type": "application/json",
-          // Authorization: "Bearer " + data.access,
+          Authorization: `Bearer ${localStorage.getItem("access")}`,
         },
         body: JSON.stringify({
           rating: star,
@@ -25,7 +25,7 @@ document.getElementById("submitReview").addEventListener("click", function () {
       });
       const data = await res.json();
       console.log(data);
-      alert("리뷰작성이 완료되었습니다.");
+      alert("리뷰작성이 완료되었습니다. ");
       window.location.href = "../Mypage/Mypage.html";
     } catch (error) {
       console.error("네트워크 요청 실패:", error);

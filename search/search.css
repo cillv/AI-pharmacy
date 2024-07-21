@@ -1,19 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: white;
+}
+.ai-pharmacy {
+  position: absolute;
+  font-family: "Playfair Display", serif;
+  top: 8px;
+  left: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  font-weight: 900;
+
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+}
+
+.top-lines {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top-lines::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: white;
+}
+
+.nav-buttons {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-buttons button {
+  background-color: transparent;
+  color: gray;
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.nav-buttons div {
+  background-color: transparent;
+  color: gray;
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+.nav-buttons button:hover {
+  color: black;
+}
+
+/* 기능성 */
+
+.hidden {
+  display: none;
+}
 body {
   font-family: Arial, sans-serif;
   display: flex;
   height: 100vh;
   margin: 0;
-  background-color: #f0f0f0;
+  background-color: white;
 }
 .chat-container {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: #ffffff;
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  margin-top: 50px;
+  background-color: white;
 }
 .messages {
   flex: 1;

@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="search.css" />
   </head>
   <body>
+    <button
+      class="ai-pharmacy"
+      onclick="window.top.location.href='../main/main.html'"
+    >
+      AI_Pharmacy
+    </button>
+    <div class="nav-buttons">
+      <div id="UN" class="hidden">사용자 이름</div>
+      <button
+        onclick="window.top.location.href='../log in/log.html'"
+        id="loginB"
+      >
+        로그인
+      </button>
+      <button class="hidden" id="logoutB">로그아웃</button>
+      <button onclick="window.top.location.href='../Mypage/Mypage.html'">
+        마이페이지
+      </button>
+      <button onclick="clickBox()">장바구니</button>
+    </div>
+    <div class="top-lines"></div>
     <div class="chat-container">
       <div class="messages" id="messages"></div>
       <div class="input-container">
@@ -16,10 +37,5 @@
     </div>
     <script src="search.js"></script>
     <script src="../url.js"></script>
-    <script>
-      window.onload = function () {
-        getHistory();
-      };
-    </script>
   </body>
 </html>
