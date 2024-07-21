@@ -203,6 +203,13 @@ async function getSeverAPI(type, id){
                 contentBox.appendChild(btn)
                 btn.innerHTML = "뒤로가기"
                 btn.onclick = function() { DrawBuyHTML() };
+                
+                const RB = document.createElement("button")
+
+                RB.innerHTML = "리뷰 작성"
+                RB.onclick = function() { };
+                RB.classList.add("BDivTextB")
+
             }
         }
 
@@ -233,7 +240,6 @@ function oderBuyH(data){
     const buy_datetext = document.createElement('h5')
     const numberetext = document.createElement('h5')
     const A_D_B = document.createElement("button")
-    const RB = document.createElement("button")
 
     newDiv.appendChild(buy_datetext)
     newDiv.appendChild(numberetext)
@@ -246,14 +252,11 @@ function oderBuyH(data){
     A_D_B.innerHTML = "더보기"
     A_D_B.onclick = function() { sendBuy(id) };
 
-    RB.innerHTML = "리뷰 작성"
-    RB.onclick = function() { };
-
     newDiv.classList.add("buyDiv")
     buy_datetext.classList.add("BDivText")
     numberetext.classList.add("BDivText")
     A_D_B.classList.add("BDivTextB")
-    RB.classList.add("BDivTextB")
+
 }
 
 function DrawBuy(m_data){
